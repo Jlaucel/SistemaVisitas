@@ -1,0 +1,304 @@
+﻿@using SistemaVisitas.Models
+@model UPSAViewModel
+@{
+    ViewData["Title"] = "UPS A";
+}
+
+<h3>@ViewData["Message"]</h3>
+
+
+
+
+@using (Html.BeginForm("UPSA", "Rooms", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{ 
+        <div class="card">
+            <div class="card-header">
+                <h2><strong>CUARTO ELECTRICO A </strong></h2>
+            </div>
+            <div class="card-body card-block">
+                <div class="row form-group" style="padding-left:2em">
+                    <div class=" col-md-4">
+                        <label class=" form-control-label">Limpieza del Area</label>
+                    </div>
+                    <div class=" col-md-2">
+                        <div class="form-check">
+                            <div class="checkbox">
+                                <label for="LIMPAREA" class="form-check-label ">
+                                    @Html.CheckBoxFor(m => m.LIMPAREA, new { @class = "form-check-input" }) *
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" col-md-4">
+                        <label for="TEMPERATURA" class=" form-control-label">Temperatura de Area</label>
+                    </div>
+                    <div class=" col-md-2">
+                        @Html.TextBoxFor(m => m.TEMPERATURA, new { @class = "form-control", @placeholder = "°" })
+                        @Html.ValidationMessageFor(m => m.TEMPERATURA, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+                <div class="row form-group" style="padding-left:2em;">
+                    <div class=" col-md-4">
+                        <label class=" form-control-label">Panel Vesda</label>
+                    </div>
+                    <div class=" col-md-2">
+                        <div class="form-check">
+                            <div class="checkbox">
+                                <label for="PANEL_VESDA" class="form-check-label ">
+                                    @Html.CheckBoxFor(m => m.PANEL_VESDA, new { @class = "form-check-input" }) *
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-md-4">
+                        <label class=" form-control-label">Posicion Breakers</label>
+                    </div>
+                    <div class=" col-md-2">
+                        <div class="form-check">
+                            <div class="checkbox">
+                                <label for="POSICION_BREAKERS" class="form-check-label ">
+                                    @Html.CheckBoxFor(m => m.POSICION_BREAKERS, new { @class = "form-check-input" }) *
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group" style="padding-left:2em;">
+                    <div class=" col-md-4">
+                        <label class=" form-control-label">Manometro FM200</label>
+                    </div>
+                    <div class=" col-md-2">
+                        <div class="form-check">
+                            <div class="checkbox">
+                                <label for="MANOMETRO_FM200" class="form-check-label ">
+                                    @Html.CheckBoxFor(m => m.MANOMETRO_FM200, new { @class = "form-check-input" }) *
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-md-4">
+                        <label class=" form-control-label">Panel FM200</label>
+                    </div>
+                    <div class=" col-md-2">
+                        <div class="form-check">
+                            <div class="checkbox">
+                                <label for="PANEL_FM200" class="form-check-label ">
+                                    @Html.CheckBoxFor(m => m.PANEL_FM200, new { @class = "form-check-input" }) *
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group" style="padding-left:2em;">
+                    <div class=" col-md-4">
+                        <label class=" form-control-label">Leds DVR</label>
+                    </div>
+                    <div class=" col-md-2">
+                        <div class="form-check">
+                            <div class="checkbox">
+                                <label for="LEDS_DVR" class="form-check-label ">
+                                    @Html.CheckBoxFor(m => m.LEDS_DVR, new { @class = "form-check-input" }) *
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-md-4">
+                        <label class=" form-control-label">Leds NVR</label>
+                    </div>
+                    <div class=" col-md-2">
+                        <div class="form-check">
+                            <div class="checkbox">
+                                <label for="LEDS_NVR" class="form-check-label ">
+                                    @Html.CheckBoxFor(m => m.LEDS_NVR, new { @class = "form-check-input" }) *
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group" style="padding-left:2em;">
+                    <div class=" col-md-4">
+                        <label class=" form-control-label">Extintores</label>
+                    </div>
+                    <div class=" col-md-2">
+                        <div class="form-check">
+                            <div class="checkbox">
+                                <label for="EXTINTORES" class="form-check-label ">
+                                    @Html.CheckBoxFor(m => m.EXTINTORES, new { @class = "form-check-input" }) *
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr />
+                <h4> <label style="padding-left:20px;" class=" form-control-label">UPS A</label> </h4>
+                <hr />
+
+                <div class="row form-group" style="padding-left:2em;">
+                    <div class=" col-md-4">
+                        <label class=" form-control-label">Estado del Sistema</label>
+                    </div>
+                    <div class=" col-md-2">
+                        <div class="form-check">
+                            <div class="checkbox">
+                                <label for="ESTADO_SISTEMA" class="form-check-label ">
+                                    @Html.CheckBoxFor(m => m.ESTADO_SISTEMA, new { @class = "form-check-input" }) *
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-md-4">
+                        <label class=" form-control-label">Revision LOG</label>
+                    </div>
+                    <div class=" col-md-2">
+                        <div class="form-check">
+                            <div class="checkbox">
+                                <label for="REVISION_LOG" class="form-check-label ">
+                                    @Html.CheckBoxFor(m => m.REVISION_LOG, new { @class = "form-check-input" }) *
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group" style="padding-left:2em;">
+
+                    <div class=" col-md-4">
+                        <label for="VOLTAJE_BYPASS" class=" form-control-label">Voltaje de ByPass</label>
+                    </div>
+                    <div class=" col-md-2">
+
+                        @Html.TextBoxFor(m => m.VOLTAJE_BYPASS, new { @class = "form-control", @placeholder = "°" })
+                        @Html.ValidationMessageFor(m => m.VOLTAJE_BYPASS, "", new { @class = "text-danger" })
+                    </div>
+                    <div class=" col-md-4">
+                        <label for="AMPERAJE_BYPASS" class=" form-control-label">Amperaje de ByPass</label>
+                    </div>
+                    <div class=" col-md-2">
+
+                        @Html.TextBoxFor(m => m.AMPERAJE_BYPASS, new { @class = "form-control", @placeholder = "°" })
+                        @Html.ValidationMessageFor(m => m.AMPERAJE_BYPASS, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+                <div class="row form-group" style="padding-left:2em;">
+
+                    <div class=" col-md-4">
+                        <label for="FRECUENCIA_SALIDA" class=" form-control-label">Frecuencia de Salida (Hz)</label>
+                    </div>
+                    <div class=" col-md-2">
+
+                        @Html.TextBoxFor(m => m.FRECUENCIA_SALIDA, new { @class = "form-control", @placeholder = "°" })
+                        @Html.ValidationMessageFor(m => m.FRECUENCIA_SALIDA, "", new { @class = "text-danger" })
+                    </div>
+                    <div class=" col-md-4">
+                        <label for="POTENCIA_SALIDA" class=" form-control-label">Potencia de Salida (Kw)</label>
+                    </div>
+                    <div class=" col-md-2">
+
+                        @Html.TextBoxFor(m => m.POTENCIA_SALIDA, new { @class = "form-control", @placeholder = "°" })
+                        @Html.ValidationMessageFor(m => m.POTENCIA_SALIDA, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+
+                <label style="padding-left:20px; font-size:14px" class=" form-control-label"> <strong>Voltaje de Entrada: </strong> </label>
+                <div class="row form-group" style="padding-left:2em;">
+
+                    <div class=" col-md-1">
+                        <label for="VOLTAJE_ENTRADA_L12" class=" form-control-label">L12</label>
+                    </div>
+                    <div class=" col-md-3">
+
+                        @Html.TextBoxFor(m => m.VOLTAJE_ENTRADA_L12, new { @class = "form-control", @placeholder = "°" })
+                        @Html.ValidationMessageFor(m => m.VOLTAJE_ENTRADA_L12, "", new { @class = "text-danger" })
+                    </div>
+                    <div class=" col-md-1">
+                        <label for="VOLTAJE_ENTRADA_L23" class=" form-control-label">L23</label>
+                    </div>
+                    <div class=" col-md-3">
+
+                        @Html.TextBoxFor(m => m.VOLTAJE_ENTRADA_L23, new { @class = "form-control", @placeholder = "°" })
+                        @Html.ValidationMessageFor(m => m.VOLTAJE_ENTRADA_L23, "", new { @class = "text-danger" })
+                    </div>
+                    <div class=" col-md-1">
+                        <label for="VOLTAJE_ENTRADA_L31" class=" form-control-label">L31</label>
+                    </div>
+                    <div class=" col-md-3">
+
+                        @Html.TextBoxFor(m => m.VOLTAJE_ENTRADA_L31, new { @class = "form-control", @placeholder = "°" })
+                        @Html.ValidationMessageFor(m => m.VOLTAJE_ENTRADA_L31, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <label style="padding-left:20px; font-size:14px" class=" form-control-label"> <strong>Voltaje de Salida: </strong> </label>
+                <div class="row form-group" style="padding-left:2em;">
+
+                    <div class=" col-md-1">
+                        <label for="VOLTAJE_SALIDA_L12" class=" form-control-label">L12</label>
+                    </div>
+                    <div class=" col-md-3">
+
+                        @Html.TextBoxFor(m => m.VOLTAJE_SALIDA_L12, new { @class = "form-control", @placeholder = "°" })
+                        @Html.ValidationMessageFor(m => m.VOLTAJE_SALIDA_L12, "", new { @class = "text-danger" })
+                    </div>
+                    <div class=" col-md-1">
+                        <label for="VOLTAJE_SALIDA_L23" class=" form-control-label">L23</label>
+                    </div>
+                    <div class=" col-md-3">
+
+                        @Html.TextBoxFor(m => m.VOLTAJE_SALIDA_L23, new { @class = "form-control", @placeholder = "°" })
+                        @Html.ValidationMessageFor(m => m.VOLTAJE_SALIDA_L23, "", new { @class = "text-danger" })
+                    </div>
+                    <div class=" col-md-1">
+                        <label for="VOLTAJE_SALIDA_L31" class=" form-control-label">L31</label>
+                    </div>
+                    <div class=" col-md-3">
+
+                        @Html.TextBoxFor(m => m.VOLTAJE_SALIDA_L31, new { @class = "form-control", @placeholder = "°" })
+                        @Html.ValidationMessageFor(m => m.VOLTAJE_SALIDA_L31, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row form-group" style="padding-left:2em;">
+                    
+                        <label class=" form-control-label"><strong>Alertas en los Hardware </strong></label>
+                    
+                </div>
+
+                         
+                <div class="row form-group" style="padding-left:2em;">
+                   <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 1</small>
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK1_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+
+                        <button id="detailBtn" value="1" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                    
+                </div>
+          
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <i class="fa fa-dot-circle-o"></i>  
+
+                </button>
+                <button type="reset" class="btn btn-danger btn-sm">
+                    <i class="fa fa-ban"></i> Reset
+                </button>
+            </div>
+        </div>
+    </div>
+}

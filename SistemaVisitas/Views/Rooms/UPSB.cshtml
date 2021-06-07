@@ -1,0 +1,196 @@
+﻿@using SistemaVisitas.Models
+@model UPSBViewModel
+@{
+    ViewData["Title"] = "UPS B";
+}
+
+<h3>@ViewData["Message"]</h3>
+
+
+@using (Html.BeginForm("UPSB", "Rooms", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="card">
+        <div class="card-header">
+            <h2><strong>CUARTO ELECTRICO B </strong></h2>
+        </div>
+        <div class="card-body card-block">
+            
+            <div class="row form-group" style="padding-left:2em;">
+                <div class=" col-md-4">
+                    <label class=" form-control-label">Posicion Breakers</label>
+                </div>
+                <div class=" col-md-2">
+                    <div class="form-check">
+                        <div class="checkbox">
+                            <label for="POSICION_BREAKERS" class="form-check-label ">
+                                @Html.CheckBoxFor(m => m.POSICION_BREAKERS, new { @class = "form-check-input" }) *
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group" style="padding-left:2em">
+                <div class=" col-md-4">
+                    <label class=" form-control-label">Limpieza del Area</label>
+                </div>
+                <div class=" col-md-2">
+                    <div class="form-check">
+                        <div class="checkbox">
+                            <label for="LIMPAREA" class="form-check-label ">
+                                @Html.CheckBoxFor(m => m.LIMPAREA, new { @class = "form-check-input" }) *
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" col-md-4">
+                    <label for="TEMPERATURA" class=" form-control-label">Temperatura de Area</label>
+                </div>
+                <div class=" col-md-2">
+
+                    @Html.TextBoxFor(m => m.TEMPERATURA, new { @class = "form-control", @placeholder = "°" })
+                    @Html.ValidationMessageFor(m => m.TEMPERATURA, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+            <hr />
+            <h4> <label style="padding-left:20px;" class=" form-control-label">UPS B</label> </h4>
+            <hr />
+            <div class="row form-group" style="padding-left:2em;">
+                <div class=" col-md-4">
+                    <label class=" form-control-label">Estado del Sistema</label>
+                </div>
+                <div class=" col-md-2">
+                    <div class="form-check">
+                        <div class="checkbox">
+                            <label for="ESTADO_SISTEMA" class="form-check-label ">
+                                @Html.CheckBoxFor(m => m.ESTADO_SISTEMA, new { @class = "form-check-input" }) *
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-md-4">
+                    <label class=" form-control-label">Revision LOG</label>
+                </div>
+                <div class=" col-md-2">
+                    <div class="form-check">
+                        <div class="checkbox">
+                            <label for="REVISION_LOG" class="form-check-label ">
+                                @Html.CheckBoxFor(m => m.REVISION_LOG, new { @class = "form-check-input" }) *
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group" style="padding-left:2em;">
+
+                <div class=" col-md-4">
+                    <label for="VOLTAJE_BYPASS" class=" form-control-label">Voltaje de ByPass</label>
+                </div>
+                <div class=" col-md-2">
+
+                    @Html.TextBoxFor(m => m.VOLTAJE_BYPASS, new { @class = "form-control", @placeholder = "°" })
+                    @Html.ValidationMessageFor(m => m.VOLTAJE_BYPASS, "", new { @class = "text-danger" })
+                </div>
+                <div class=" col-md-4">
+                    <label for="AMPERAJE_BYPASS" class=" form-control-label">Amperaje de ByPass</label>
+                </div>
+                <div class=" col-md-2">
+
+                    @Html.TextBoxFor(m => m.AMPERAJE_BYPASS, new { @class = "form-control", @placeholder = "°" })
+                    @Html.ValidationMessageFor(m => m.AMPERAJE_BYPASS, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+            <div class="row form-group" style="padding-left:2em;">
+
+                <div class=" col-md-4">
+                    <label for="FRECUENCIA_SALIDA" class=" form-control-label">Frecuencia de Salida (Hz)</label>
+                </div>
+                <div class=" col-md-2">
+
+                    @Html.TextBoxFor(m => m.FRECUENCIA_SALIDA, new { @class = "form-control", @placeholder = "°" })
+                    @Html.ValidationMessageFor(m => m.FRECUENCIA_SALIDA, "", new { @class = "text-danger" })
+                </div>
+                <div class=" col-md-4">
+                    <label for="POTENCIA_SALIDA" class=" form-control-label">Potencia de Salida (Kw)</label>
+                </div>
+                <div class=" col-md-2">
+
+                    @Html.TextBoxFor(m => m.POTENCIA_SALIDA, new { @class = "form-control", @placeholder = "°" })
+                    @Html.ValidationMessageFor(m => m.POTENCIA_SALIDA, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+
+            <label style="padding-left:20px; font-size:14px" class=" form-control-label"> <strong>Voltaje de Entrada: </strong> </label>
+            <div class="row form-group" style="padding-left:2em;">
+
+                <div class=" col-md-1">
+                    <label for="VOLTAJE_ENTRADA_L12" class=" form-control-label">L12</label>
+                </div>
+                <div class=" col-md-3">
+
+                    @Html.TextBoxFor(m => m.VOLTAJE_ENTRADA_L12, new { @class = "form-control", @placeholder = "°" })
+                    @Html.ValidationMessageFor(m => m.VOLTAJE_ENTRADA_L12, "", new { @class = "text-danger" })
+                </div>
+                <div class=" col-md-1">
+                    <label for="VOLTAJE_ENTRADA_L23" class=" form-control-label">L23</label>
+                </div>
+                <div class=" col-md-3">
+
+                    @Html.TextBoxFor(m => m.VOLTAJE_ENTRADA_L23, new { @class = "form-control", @placeholder = "°" })
+                    @Html.ValidationMessageFor(m => m.VOLTAJE_ENTRADA_L23, "", new { @class = "text-danger" })
+                </div>
+                <div class=" col-md-1">
+                    <label for="VOLTAJE_ENTRADA_L31" class=" form-control-label">L31</label>
+                </div>
+                <div class=" col-md-3">
+
+                    @Html.TextBoxFor(m => m.VOLTAJE_ENTRADA_L31, new { @class = "form-control", @placeholder = "°" })
+                    @Html.ValidationMessageFor(m => m.VOLTAJE_ENTRADA_L31, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <label style="padding-left:20px; font-size:14px" class=" form-control-label"> <strong>Voltaje de Salida: </strong> </label>
+            <div class="row form-group" style="padding-left:2em;">
+
+                <div class=" col-md-1">
+                    <label for="VOLTAJE_SALIDA_L12" class=" form-control-label">L12</label>
+                </div>
+                <div class=" col-md-3">
+
+                    @Html.TextBoxFor(m => m.VOLTAJE_SALIDA_L12, new { @class = "form-control", @placeholder = "°" })
+                    @Html.ValidationMessageFor(m => m.VOLTAJE_SALIDA_L12, "", new { @class = "text-danger" })
+                </div>
+                <div class=" col-md-1">
+                    <label for="VOLTAJE_SALIDA_L23" class=" form-control-label">L23</label>
+                </div>
+                <div class=" col-md-3">
+
+                    @Html.TextBoxFor(m => m.VOLTAJE_SALIDA_L23, new { @class = "form-control", @placeholder = "°" })
+                    @Html.ValidationMessageFor(m => m.VOLTAJE_SALIDA_L23, "", new { @class = "text-danger" })
+                </div>
+                <div class=" col-md-1">
+                    <label for="VOLTAJE_SALIDA_L31" class=" form-control-label">L31</label>
+                </div>
+                <div class=" col-md-3">
+
+                    @Html.TextBoxFor(m => m.VOLTAJE_SALIDA_L31, new { @class = "form-control", @placeholder = "°" })
+                    @Html.ValidationMessageFor(m => m.VOLTAJE_SALIDA_L31, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary btn-sm">
+                <i class="fa fa-dot-circle-o"></i>  
+
+            </button>
+            <button type="reset" class="btn btn-danger btn-sm">
+                <i class="fa fa-ban"></i> Reset
+            </button>
+        </div>
+    </div>
+}

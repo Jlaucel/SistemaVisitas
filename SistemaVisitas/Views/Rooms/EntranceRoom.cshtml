@@ -1,0 +1,164 @@
+﻿@using SistemaVisitas.Models
+@model EntranceRoomViewModel
+@{
+   // ViewData["Title"] = "Entrance Room";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+
+
+
+
+
+    @using (Html.BeginForm("EntranceRoom", "Rooms", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+    @Html.AntiForgeryToken()
+        <div class="card">
+            <div class="card-header">
+                <h2><strong>ENTRANCE ROOM</strong></h2>
+            </div>
+
+            <div class="card-body card-block">
+
+                <div class="row form-group" style="padding-left:2em">
+                    <div class=" col-md-4">
+                        <label class=" form-control-label">Limpieza del Area</label>
+                    </div>
+                    <div class=" col-md-2">
+                        <div class="form-check">
+                            <div class="checkbox">
+                                <label for="LIMPAREA" class="form-check-label ">
+                                    @Html.CheckBoxFor(m => m.LIMPAREA, new { @class = "form-check-input" }) *
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" col-md-4">
+                        <label for="TEMPERATURA" class=" form-control-label">Temperatura de Area</label>
+                    </div>
+                    <div class=" col-md-2">
+
+                        @Html.TextBoxFor(m => m.TEMPERATURA, new { @class = "form-control", @placeholder = "°" })
+                        @Html.ValidationMessageFor(m => m.TEMPERATURA, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+                <div class="row form-group" style="padding-left:2em;">
+
+                    <label class=" form-control-label"><strong>Alertas en los Hardware </strong></label>
+
+                </div>
+                <div class="row form-group" style="padding-left:2em;">
+
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 2</small>
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK2_STATUS, new { @class = "switch-input" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+
+                        <button id="detailBtn" value="2" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 3</small>
+
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK3_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="3" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                </div>
+                <div class="row form-group" style="padding-left:2em;">
+
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 4</small>
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK4_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+
+                        <button id="detailBtn" value="4" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 5</small>
+
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK5_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="5" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row form-group" style="padding-left:2em;">
+                    <div class=" col-md-4">
+                        <label class=" form-control-label">Extintor</label>
+                    </div>
+                    <div class=" col-md-2">
+                        <div class="form-check">
+                            <div class="checkbox">
+                                <label for="EXTINTOR_STATUS" class="form-check-label ">
+                                    @Html.CheckBoxFor(m => m.EXTINTOR_STATUS, new { @class = "form-check-input" }) *
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="card-footer">
+                <button id="btn" type="submit" class="btn btn-primary btn-sm">
+                    <i class="fa fa-dot-circle-o"></i> @*Html.ActionLink("Enviar", "UPSA", "Rooms", null, new { @class = "btn-primary" })*@
+
+                </button>
+                <button type="reset" class="btn btn-danger btn-sm">
+                    <i class="fa fa-ban"></i> Reset
+                </button>
+            </div>
+        </div>
+
+    }
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        //your code here
+
+
+       
+    });
+
+
+</script>

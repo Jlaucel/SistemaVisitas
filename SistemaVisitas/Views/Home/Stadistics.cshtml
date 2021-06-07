@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "Stadistics";
+}
+
+
+@model IEnumerable<SistemaVisitas.Models.RegistroVisitasViewModel>
+
+<div class="row">
+    <h2 class="title-1 m-b-25">Revisiones Realizadas</h2>
+    <div class="table-responsive table--no-card m-b-40">
+        <table class="table table-borderless table-striped table-earning">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Hora inicio</th>
+                    <th>Hora final</th>
+                    <th>Operador</th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                @foreach (var item in Model)
+                {
+
+                    var HoraInicio = DateTime.SpecifyKind(DateTime.Now.Date.Add(item.HORA_INICIO), DateTimeKind.Utc).ToShortTimeString();
+                    var HoraFinal = DateTime.SpecifyKind(DateTime.Now.Date.Add(item.HORA_FINAL), DateTimeKind.Utc).ToShortTimeString();
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FECHA.Day)/@Html.DisplayFor(modelItem => item.FECHA.Month)/@Html.DisplayFor(modelItem => item.FECHA.Year)
+                        </td>
+                        <td>
+                            @HoraInicio
+                        </td>
+                        <td>
+                            @HoraFinal
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.USERNAME)
+                        </td>
+                    </tr>
+
+
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="au-card m-b-30">
+            <div class="au-card-inner">
+                <h3 class="title-2 m-b-40">Visitas por Empleados</h3>
+                <canvas id="barChartx"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="row">
+            <div class="col-md-1">
+                <label for="select" class=" form-control-label">Sala</label>
+            </div>
+            <div class="col-md-3">
+                <select name="select" id="select" class="form-control">
+                    <option value="0">Seleccion</option>
+                    <option value="1">Entrace Room</option>
+                    <option value="2">Generator Room</option>
+                    <option value="3">UPS B</option>
+                    <option value="3">Cuarto Electrico</option>
+                    <option value="3">ODC Office</option>
+                </select>
+            </div>
+            <div class="col-md-1">
+                <label for="select" class=" form-control-label">Campo</label>
+            </div>
+            <div class="col-md-3">
+                <select name="select" id="select" class="form-control">
+                    <option value="0">Seleccion</option>
+                    <option value="1">Temperatura UPS A</option>
+                    <option value="2">Estado Rack 2</option>
+                    <option value="3">Temperatura Aire 20tnds</option>
+                    <option value="3">Voltaje Baterias</option>
+                </select>
+            </div>
+            <div class="col-md-1">
+                <input class="au-btn au-btn--blue2" value="Actualizar" type="button" />
+            </div>
+            <div class="col-md-1">
+            </div> 
+        </div>
+            <hr />
+
+            <div class="au-card m-b-30">
+                <div class="au-card-inner">
+                    <h3 class="title-2 m-b-40">Valor Promedio</h3>
+                    <canvas id="team-chartx"></canvas>
+                </div>
+            </div>
+
+        </div>
+</div>

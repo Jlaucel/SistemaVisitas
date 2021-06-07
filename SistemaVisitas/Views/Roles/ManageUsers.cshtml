@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "ManageUsers";
+}
+
+
+
+
+
+
+
+    @* @Html.ActionLink("Create New Role", "Create") | @Html.ActionLink("Manage User Role", "ManageUsers")*@
+
+    <div class="container">
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="content-wrap">
+            <div class="login-content">
+               
+                <div class="login-logo">
+
+                </div>
+                <div class="login-form">
+
+                    <div class="form-group">
+                        <h2>Añadir un ROL a un Usuario</h2>
+                        @using (Html.BeginForm("RoleAddToUser", "Roles"))
+                        {
+
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary()
+
+                            <div class="row form-group">
+                                <div class="col-md-5 col-lg-5">  Username @Html.TextBox("UserName", "", new { @class = "form-control" }) </div>
+                                <div class="col-md-5 col-lg-5">Role Name  @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select...", new { @class = "form-control" }) </div>
+                                <div class="col-md-2 col-lg-2">
+                                  <input type="submit" value="Añadir" class=" au-btn--submit " /> 
+                                        
+                                  
+                                </div>
+                            </div>
+
+
+                            <div class="row form-group">
+
+
+                            </div>
+
+
+                        }
+                    </div>
+                    <div class="form-group">
+                        <h3> Obtener Roles de un usuario</h3>
+
+                        @using (Html.BeginForm("GetRoles", "Roles"))
+                        {
+
+                            @Html.AntiForgeryToken()
+
+                            <p>
+                                Username = @Html.TextBox("UserName")
+                                <input type="submit" value="get roles for this user" />
+                            </p>
+
+
+
+
+                        }
+
+                        @if (ViewBag.RolesForThisUser != null)
+                        {
+                            <div style="background-color: yellow;">
+                                <h3>Roles for this user</h3>
+                                <ol>
+                                    @foreach (string s in ViewBag.RolesForThisUser)
+                                    {
+                                        <li>@s</li>}
+
+                                </ol>
+                            </div>
+                        }
+                    </div>
+                    <div class="form-group">
+                        <h3> Delete a user from a role</h3>
+
+                        @using (Html.BeginForm("DeleteRoleForUser", "Roles"))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary()
+
+                            <p>
+                                Username : @Html.TextBox("UserName")
+                                Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select...")
+                            </p>
+
+                            <input type="submit" value="Delete this user from role" />
+
+                        }
+                    </div>
+
+                    <div class="login-checkbox">
+
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Cambiar Contraseña" class="au-btn btn-default blue" />
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+

@@ -30,4 +30,6 @@ namespace SistemaVisitas.Models
             return new ApplicationDbContext();
         }
     }
+
+    
 }

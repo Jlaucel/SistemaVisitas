@@ -49,6 +49,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -197,16 +199,254 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MembersController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\RoomsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\SistemaVisitasEntitites.cs" />
+    <Compile Include="Models\RoomsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Contents\alert.html" />
+    <Content Include="Contents\badge.html" />
+    <Content Include="Contents\button.html" />
+    <Content Include="Contents\calendar.html" />
+    <Content Include="Contents\card.html" />
+    <Content Include="Contents\chart.html" />
+    <Content Include="Contents\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="Contents\css\font-face.css" />
+    <Content Include="Contents\css\theme.css" />
+    <Content Include="Contents\fontawesome.html" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-100.svg" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-100italic.svg" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-200.svg" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-200italic.svg" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-300.svg" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-300italic.svg" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-500.svg" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-500italic.svg" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-600.svg" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-600italic.svg" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-700.svg" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-700italic.svg" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-800.svg" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-800italic.svg" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-900.svg" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-900italic.svg" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-italic.svg" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-regular.svg" />
+    <Content Include="Contents\forget-pass.html" />
+    <Content Include="Contents\form.html" />
+    <Content Include="Contents\grid.html" />
+    <Content Include="Contents\images\bg-title-01.jpg" />
+    <Content Include="Contents\images\bg-title-02.jpg" />
+    <Content Include="Contents\images\icon\avatar-01.jpg" />
+    <Content Include="Contents\images\icon\avatar-02.jpg" />
+    <Content Include="Contents\images\icon\avatar-03.jpg" />
+    <Content Include="Contents\images\icon\avatar-04.jpg" />
+    <Content Include="Contents\images\icon\avatar-05.jpg" />
+    <Content Include="Contents\images\icon\avatar-06.jpg" />
+    <Content Include="Contents\images\icon\avatar-big-01.jpg" />
+    <Content Include="Contents\images\icon\logo-blue.png" />
+    <Content Include="Contents\images\icon\logo-mini.png" />
+    <Content Include="Contents\images\icon\logo-white.png" />
+    <Content Include="Contents\images\icon\logo.png" />
+    <Content Include="Contents\images\icon\Untitled-1.jpg" />
+    <Content Include="Contents\inbox.html" />
+    <Content Include="Contents\index.html" />
+    <Content Include="Contents\index2.html" />
+    <Content Include="Contents\index3.html" />
+    <Content Include="Contents\index4.html" />
+    <Content Include="Contents\js\bootstrap-datetimepicker.js" />
+    <Content Include="Contents\js\main.js" />
+    <Content Include="Contents\js\moment.js" />
+    <Content Include="Contents\login.html" />
+    <Content Include="Contents\map.html" />
+    <Content Include="Contents\media\9606031aabebde32fa96edeff071a132.jpg" />
+    <Content Include="Contents\modal.html" />
+    <Content Include="Contents\progress-bar.html" />
+    <Content Include="Contents\register.html" />
+    <Content Include="Contents\switch.html" />
+    <Content Include="Contents\tab.html" />
+    <Content Include="Contents\table.html" />
+    <Content Include="Contents\typo.html" />
+    <Content Include="Contents\vendor\animsition\animsition.min.css" />
+    <Content Include="Contents\vendor\animsition\animsition.min.js" />
+    <Content Include="Contents\vendor\bootstrap-4.1\bootstrap.min.css" />
+    <Content Include="Contents\vendor\bootstrap-4.1\bootstrap.min.js" />
+    <Content Include="Contents\vendor\bootstrap-4.1\popper.min.js" />
+    <Content Include="Contents\vendor\bootstrap-progressbar\bootstrap-progressbar-3.3.4.min.css" />
+    <Content Include="Contents\vendor\bootstrap-progressbar\bootstrap-progressbar.min.js" />
+    <Content Include="Contents\vendor\chartjs\Chart.bundle.min.js" />
+    <Content Include="Contents\vendor\circle-progress\circle-progress.js" />
+    <Content Include="Contents\vendor\circle-progress\circle-progress.min.js" />
+    <Content Include="Contents\vendor\countdown\countdowntime.js" />
+    <Content Include="Contents\vendor\countdown\jquery.countdown.min.js" />
+    <Content Include="Contents\vendor\countdown\moment-timezone-with-data.min.js" />
+    <Content Include="Contents\vendor\countdown\moment-timezone.min.js" />
+    <Content Include="Contents\vendor\countdown\moment.min.js" />
+    <Content Include="Contents\vendor\counter-up\jquery.counterup.min.js" />
+    <Content Include="Contents\vendor\counter-up\jquery.waypoints.min.js" />
+    <Content Include="Contents\vendor\counter-up\waypoints.min.js" />
+    <Content Include="Contents\vendor\css-hamburgers\hamburgers.css" />
+    <Content Include="Contents\vendor\css-hamburgers\hamburgers.min.css" />
+    <Content Include="Contents\vendor\font-awesome-4.7\css\font-awesome.css" />
+    <Content Include="Contents\vendor\font-awesome-4.7\css\font-awesome.min.css" />
+    <Content Include="Contents\vendor\font-awesome-4.7\fonts\fontawesome-webfont.svg" />
+    <Content Include="Contents\vendor\font-awesome-4.7\HELP-US-OUT.txt" />
+    <Content Include="Contents\vendor\font-awesome-5\css\fontawesome-all.min.css" />
+    <Content Include="Contents\vendor\font-awesome-5\webfonts\fa-brands-400.svg" />
+    <Content Include="Contents\vendor\font-awesome-5\webfonts\fa-regular-400.svg" />
+    <Content Include="Contents\vendor\font-awesome-5\webfonts\fa-solid-900.svg" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\CHANGELOG.txt" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\CONTRIBUTING.txt" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\fullcalendar.css" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\fullcalendar.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\fullcalendar.min.css" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\fullcalendar.min.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\fullcalendar.print.css" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\fullcalendar.print.min.css" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\gcal.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\gcal.min.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\lib\moment.min.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\LICENSE.txt" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale-all.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\af.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\ar-dz.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\ar-kw.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\ar-ly.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\ar-ma.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\ar-sa.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\ar-tn.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\ar.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\be.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\bg.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\bs.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\ca.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\cs.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\da.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\de-at.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\de-ch.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\de.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\el.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\en-au.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\en-ca.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\en-gb.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\en-ie.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\en-nz.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\es-do.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\es-us.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\es.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\et.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\eu.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\fa.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\fi.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\fr-ca.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\fr-ch.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\fr.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\gl.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\he.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\hi.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\hr.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\hu.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\id.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\is.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\it.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\ja.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\ka.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\kk.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\ko.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\lb.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\lt.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\lv.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\mk.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\ms-my.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\ms.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\nb.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\nl-be.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\nl.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\nn.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\pl.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\pt-br.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\pt.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\ro.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\ru.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\sk.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\sl.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\sq.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\sr-cyrl.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\sr.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\sv.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\th.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\tr.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\uk.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\vi.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\zh-cn.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\zh-hk.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\locale\zh-tw.js" />
+    <Content Include="Contents\vendor\fullcalendar-3.10.0\README.txt" />
+    <Content Include="Contents\vendor\jquery-3.2.1.min.js" />
+    <Content Include="Contents\vendor\jquery-ui.min.js" />
+    <Content Include="Contents\vendor\lightbox2\dist\css\lightbox.css" />
+    <Content Include="Contents\vendor\lightbox2\dist\images\close.png" />
+    <Content Include="Contents\vendor\lightbox2\dist\images\loading.gif" />
+    <Content Include="Contents\vendor\lightbox2\dist\images\next.png" />
+    <Content Include="Contents\vendor\lightbox2\dist\images\prev.png" />
+    <Content Include="Contents\vendor\lightbox2\dist\js\lightbox-plus-jquery.js" />
+    <Content Include="Contents\vendor\lightbox2\dist\js\lightbox-plus-jquery.min.js" />
+    <Content Include="Contents\vendor\lightbox2\dist\js\lightbox.js" />
+    <Content Include="Contents\vendor\lightbox2\dist\js\lightbox.min.js" />
+    <Content Include="Contents\vendor\lightbox2\src\css\lightbox.css" />
+    <Content Include="Contents\vendor\lightbox2\src\images\close.png" />
+    <Content Include="Contents\vendor\lightbox2\src\images\loading.gif" />
+    <Content Include="Contents\vendor\lightbox2\src\images\next.png" />
+    <Content Include="Contents\vendor\lightbox2\src\images\prev.png" />
+    <Content Include="Contents\vendor\lightbox2\src\js\lightbox.js" />
+    <Content Include="Contents\vendor\mdi-font\css\material-design-iconic-font.css" />
+    <Content Include="Contents\vendor\mdi-font\css\material-design-iconic-font.min.css" />
+    <Content Include="Contents\vendor\mdi-font\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="Contents\vendor\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="Contents\vendor\perfect-scrollbar\perfect-scrollbar.js" />
+    <Content Include="Contents\vendor\perfect-scrollbar\perfect-scrollbar.min.js" />
+    <Content Include="Contents\vendor\progressbar\progressbar.js" />
+    <Content Include="Contents\vendor\progressbar\progressbar.min.js" />
+    <Content Include="Contents\vendor\select2\select2.min.css" />
+    <Content Include="Contents\vendor\select2\select2.min.js" />
+    <Content Include="Contents\vendor\slick\ajax-loader.gif" />
+    <Content Include="Contents\vendor\slick\fonts\slick.svg" />
+    <Content Include="Contents\vendor\slick\slick-theme.css" />
+    <Content Include="Contents\vendor\slick\slick.css" />
+    <Content Include="Contents\vendor\slick\slick.js" />
+    <Content Include="Contents\vendor\slick\slick.min.js" />
+    <Content Include="Contents\vendor\smk-accordion\accordion.css" />
+    <Content Include="Contents\vendor\smk-accordion\accordion.js" />
+    <Content Include="Contents\vendor\smk-accordion\accordion.min.js" />
+    <Content Include="Contents\vendor\sweetalert\sweetalert.min.js" />
+    <Content Include="Contents\vendor\vector-map\jquery.vmap.brazil.js" />
+    <Content Include="Contents\vendor\vector-map\jquery.vmap.europe.js" />
+    <Content Include="Contents\vendor\vector-map\jquery.vmap.france.js" />
+    <Content Include="Contents\vendor\vector-map\jquery.vmap.germany.js" />
+    <Content Include="Contents\vendor\vector-map\jquery.vmap.js" />
+    <Content Include="Contents\vendor\vector-map\jquery.vmap.min.js" />
+    <Content Include="Contents\vendor\vector-map\jquery.vmap.russia.js" />
+    <Content Include="Contents\vendor\vector-map\jquery.vmap.sampledata.js" />
+    <Content Include="Contents\vendor\vector-map\jquery.vmap.usa.js" />
+    <Content Include="Contents\vendor\vector-map\jquery.vmap.world.js" />
+    <Content Include="Contents\vendor\vector-map\jqvmap.min.css" />
+    <Content Include="Contents\vendor\wow\animate.css" />
+    <Content Include="Contents\vendor\wow\wow.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -220,6 +460,116 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-100.eot" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-100.ttf" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-100.woff" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-100.woff2" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-100italic.eot" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-100italic.ttf" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-100italic.woff" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-100italic.woff2" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-200.eot" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-200.ttf" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-200.woff" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-200.woff2" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-200italic.eot" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-200italic.ttf" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-200italic.woff" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-200italic.woff2" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-300.eot" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-300.ttf" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-300.woff" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-300.woff2" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-300italic.eot" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-300italic.ttf" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-300italic.woff" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-300italic.woff2" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-500.eot" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-500.ttf" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-500.woff" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-500.woff2" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-500italic.eot" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-500italic.ttf" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-500italic.woff" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-500italic.woff2" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-600.eot" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-600.ttf" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-600.woff" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-600.woff2" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-600italic.eot" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-600italic.ttf" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-600italic.woff" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-600italic.woff2" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-700.eot" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-700.ttf" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-700.woff" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-700.woff2" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-700italic.eot" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-700italic.ttf" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-700italic.woff" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-700italic.woff2" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-800.eot" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-800.ttf" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-800.woff" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-800.woff2" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-800italic.eot" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-800italic.ttf" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-800italic.woff" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-800italic.woff2" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-900.eot" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-900.ttf" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-900.woff" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-900.woff2" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-900italic.eot" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-900italic.ttf" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-900italic.woff" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-900italic.woff2" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-italic.eot" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-italic.ttf" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-italic.woff" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-italic.woff2" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-regular.eot" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-regular.ttf" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-regular.woff" />
+    <Content Include="Contents\fonts\poppins\poppins-v5-latin-regular.woff2" />
+    <Content Include="Contents\README.md" />
+    <Content Include="Contents\vendor\font-awesome-4.7\fonts\fontawesome-webfont.eot" />
+    <Content Include="Contents\vendor\font-awesome-4.7\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Contents\vendor\font-awesome-4.7\fonts\fontawesome-webfont.woff" />
+    <Content Include="Contents\vendor\font-awesome-4.7\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Contents\vendor\font-awesome-4.7\fonts\FontAwesome.otf" />
+    <Content Include="Contents\vendor\font-awesome-5\webfonts\fa-brands-400.eot" />
+    <Content Include="Contents\vendor\font-awesome-5\webfonts\fa-brands-400.ttf" />
+    <Content Include="Contents\vendor\font-awesome-5\webfonts\fa-brands-400.woff" />
+    <Content Include="Contents\vendor\font-awesome-5\webfonts\fa-brands-400.woff2" />
+    <Content Include="Contents\vendor\font-awesome-5\webfonts\fa-regular-400.eot" />
+    <Content Include="Contents\vendor\font-awesome-5\webfonts\fa-regular-400.ttf" />
+    <Content Include="Contents\vendor\font-awesome-5\webfonts\fa-regular-400.woff" />
+    <Content Include="Contents\vendor\font-awesome-5\webfonts\fa-regular-400.woff2" />
+    <Content Include="Contents\vendor\font-awesome-5\webfonts\fa-solid-900.eot" />
+    <Content Include="Contents\vendor\font-awesome-5\webfonts\fa-solid-900.ttf" />
+    <Content Include="Contents\vendor\font-awesome-5\webfonts\fa-solid-900.woff" />
+    <Content Include="Contents\vendor\font-awesome-5\webfonts\fa-solid-900.woff2" />
+    <Content Include="Contents\vendor\lightbox2\dist\js\lightbox-plus-jquery.min.map" />
+    <Content Include="Contents\vendor\lightbox2\dist\js\lightbox.min.map" />
+    <Content Include="Contents\vendor\mdi-font\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="Contents\vendor\mdi-font\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Contents\vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="Contents\vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Contents\vendor\slick\config.rb" />
+    <Content Include="Contents\vendor\slick\fonts\slick.eot" />
+    <Content Include="Contents\vendor\slick\fonts\slick.ttf" />
+    <Content Include="Contents\vendor\slick\fonts\slick.woff" />
+    <Content Include="Contents\vendor\slick\slick-theme.less" />
+    <Content Include="Contents\vendor\slick\slick-theme.scss" />
+    <Content Include="Contents\vendor\slick\slick.less" />
+    <Content Include="Contents\vendor\slick\slick.scss" />
+    <Content Include="Contents\~%24README.md" />
+    <Content Include="Data\data.xlsx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -231,7 +581,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -265,6 +617,22 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Members\Index.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\ManageUsers.cshtml" />
+    <Content Include="Views\Rooms\EntranceRoom.cshtml" />
+    <Content Include="Views\Rooms\GeneratorRoom.cshtml" />
+    <Content Include="Views\Rooms\ODCOffice.cshtml" />
+    <Content Include="Views\Rooms\ServerRoom.cshtml" />
+    <Content Include="Views\Rooms\TorreComns.cshtml" />
+    <Content Include="Views\Rooms\UPSA.cshtml" />
+    <Content Include="Views\Rooms\UPSB.cshtml" />
+    <Content Include="Views\Shared\newLayout.cshtml" />
+    <Content Include="Views\Shared\newLoginPartial.cshtml" />
+    <Content Include="Views\Shared\LoginLayout.cshtml" />
+    <Content Include="Views\Members\View.cshtml" />
+    <Content Include="Views\Home\Stadistics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -282,9 +650,75 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AMT_COM_InterfaceLib">
+      <Guid>{9853D245-3E9D-4946-895A-F30D6396DEA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="MSDATASRC">
+      <Guid>{7C0FFAB0-CD84-11D0-949A-00A0C91110ED}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

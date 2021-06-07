@@ -1,0 +1,158 @@
+﻿@{
+    ViewData["Title"] = "Torre Comunicacioines";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+
+<head>
+    <!-- Fontfaces CSS-->
+    <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="css/theme.css" rel="stylesheet" media="all">
+</head>
+<body>
+
+
+
+    <div class="card">
+        <div class="card-header">
+            <strong>Basic Form</strong> Elements
+        </div>
+        <div class="card-body card-block">
+            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <div class="row form-group">
+
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label for="text-input" class=" form-control-label">Temperatura del Area</label>
+                    </div>
+                    <div class="col-12 col-md-1">
+                        <input type="number" placeholder="Text" class="form-control">
+                        <small class="form-text text-muted">Temperatura</small>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Limpieza del Area</label>
+                    </div>
+                    <div class="col col-md-9">
+                        <div class="form-check">
+                            <div class="checkbox">
+                                <label for="checkbox1" class="form-check-label ">
+                                    <input type="checkbox" id="checkbox1" name="checkbox1" value="option1" class="form-check-input"> Limpieza del area
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Alertas en los Hardware</label>
+                    </div>
+                    <div class="col col-md-3">
+                        <div class="form-check">
+                            <div class="checkbox">
+                                <label for="Crack2" class="form-check-label ">
+                                    <input type="checkbox" id="Crack2" name="checkbox1" value="option1" class="form-check-input">Rack 2
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="Crack3" class="form-check-label ">
+                                    <input type="checkbox" id="Crack3" name="checkbox2" value="option2" class="form-check-input">Rack 3
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="Crack4" class="form-check-label ">
+                                    <input type="checkbox" id="Crack4" name="checkbox3" value="option3" class="form-check-input">Rack 4
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="Crack5" class="form-check-label ">
+                                    <input type="checkbox" id="Crack5" name="checkbox4" value="option4" class="form-check-input">Rack 5
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col col-md-6 ">
+                        <div class="form-group small" disabled>
+                            <input type="text" placeholder="Rack 2" class="form-control" disabled>
+                        </div>
+                        <div class="form-group small">
+                            <input type="text" placeholder="Rack 3" class="form-control" disabled>
+                        </div>
+                        <div class="form-group small">
+                            <input type="text" placeholder="Rack 4" class="form-control" disabled>
+                        </div>
+                        <div class="form-group small">
+                            <input type="text" placeholder="Rack 5" class="form-control" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Estado del extintor</label>
+                    </div>
+                    <div class="col col-md-3">
+                        <div class="form-check">
+                            <div class="checkbox">
+                                <label for="checkbox5" class="form-check-label ">
+                                    <input type="checkbox" id="checkbox5" name="checkbox1" value="option1" class="form-check-input"> Estado del extintor
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary btn-sm">
+                <i class="fa fa-dot-circle-o"></i> Submit
+            </button>
+            <button type="reset" class="btn btn-danger btn-sm">
+                <i class="fa fa-ban"></i> Reset
+            </button>
+        </div>
+    </div>
+    <!-- Jquery JS-->
+    <script src="vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="vendor/slick/slick.min.js">
+    </script>
+    <script src="vendor/wow/wow.min.js"></script>
+    <script src="vendor/animsition/animsition.min.js"></script>
+    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="vendor/select2/select2.min.js">
+    </script>
+
+    <!-- Main JS-->
+    <script src="js/main.js"></script>
+</body>

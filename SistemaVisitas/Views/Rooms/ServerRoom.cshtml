@@ -1,0 +1,695 @@
+﻿@using SistemaVisitas.Models
+@model ServerRoomViewModel
+@{
+    ViewData["Title"] = "Server Room";
+}
+
+@using (Html.BeginForm("ServerRoom", "Rooms", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="modal" id="staticModal" tabindex="+1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticModalLabel">Static Modal</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modalbody">
+                    
+                  <table class="table table-bordered">
+                      <thead>
+                          <tr> <th>Equipo </th> 
+                               <th>Comentario </th>
+                           </tr>
+                      </thead>
+                      <tbody id="DetailBodyT">
+                        
+                      </tbody>
+                      
+                  </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>                   
+                </div>
+            </div>
+        </div>
+        </div>
+      
+        <div class="card">
+            <div class="card-header">
+                <h2><strong>SERVER ROOM</strong></h2>
+            </div>
+            <div class="card-body card-block">
+                <div class=" row ">
+                    <select class="form-group" aria-label="Default select example">
+                        <option selected>Seleccione la Hora de la visita</option>
+                        <option value="1">Visita 7:30 AM</option>
+                        <option value="2">Visita 1:00 PM </option>
+                        <option value="3">Visita 5:00 PM</option>
+                    </select>
+                </div>
+                <div class="row form-group" style="padding-left:2em;">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Limpieza del area</label>
+                    </div>
+                    <div class="col col-md-9">
+                        <div class="form-check">
+                            <div class="checkbox">
+                                <label for="LimpArea" class="form-check-label ">
+                                    @Html.CheckBoxFor(m => m.LIMPAREA, new { @class = "form-check-input" }) *
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group" style="padding-left:2em;">
+                    <div class="col col-md-3">
+                        <label class=" form-control-label">Alertas en los Hardware</label>
+                    </div>
+                </div>
+
+               
+
+                <div class="row form-group" style="padding-left:2em;">
+
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 11</small>
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK11_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+
+                        <button id="detailBtn" value="11" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 12</small>
+
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK12_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="12" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                </div>
+                <div class="row form-group" style="padding-left:2em;">
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 13</small>
+
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK13_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="13" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 14</small>
+
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK14_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="14" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                </div>
+                <div class="row form-group" style="padding-left:2em;">
+
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 15</small>
+
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK15_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="15" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 16A</small>
+
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK16A_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="16A" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                </div>
+                <div class="row form-group" style="padding-left:2em;">
+
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 16B</small>
+
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK16B_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="16B" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack  21</small>
+
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK21_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="21" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                </div>
+                <div class="row form-group" style="padding-left:2em;">
+
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 22</small>
+
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK22_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="22" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 23</small>
+
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK23_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="23" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                </div>
+                <div class="row form-group" style="padding-left:2em;">
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 24</small>
+
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK24_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="24" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 25A</small>
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK25A_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="25B" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                </div>
+                <div class="row form-group" style="padding-left:2em;">
+
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 25B</small>
+
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK25B_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="25B" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 26A</small>
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK26A_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="26A" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                </div>
+                <div class="row form-group" style="padding-left:2em;">
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 26B</small>
+
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK26B_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="26B" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 27</small>
+
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK27_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="27" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                </div>
+                <div class="row form-group" style="padding-left:2em;">
+
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 28</small>
+
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK28_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="28" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 29</small>
+
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK29_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="29" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                </div>
+
+                <hr />
+                <h4> <label style="padding-left:20px;" class=" form-control-label">PDU A</label> </h4>
+                <hr />
+
+
+                <div class="row form-group" style="padding-left:2em;">
+                    <div class=" col-md-4">
+                        <label class=" form-control-label">Estado Alarma  (PDUA)</label>
+                    </div>
+                    <div class=" col-md-2">
+                        <div class="form-check">
+                            <div class="checkbox">
+                                <label for="PDUA_ALARMA" class="form-check-label ">
+                                    @Html.CheckBoxFor(m => m.PDUA_ALARMA, new { @class = "form-check-input" }) *
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" col-md-4">
+                        <label for="PDUA_POTENCIA" class=" form-control-label">Potencia (Kw)</label>
+                    </div>
+                    <div class=" col-md-2">
+                        @Html.TextBoxFor(m => m.PDUA_POTENCIA, new { @class = "form-control", @placeholder = "°", @type = "number" })
+                        @Html.ValidationMessageFor(m => m.PDUA_POTENCIA, null, new { @class = "text-danger" })
+                    </div>
+
+                </div>
+
+                <div class="row form-group" style="padding-left:2em;">
+                    <div class=" col-md-4">
+                        <label class=" form-control-label">Estado Alarma  (PDUA)</label>
+                    </div>
+                    <div class=" col-md-2">
+                        <div class="form-check">
+                            <div class="checkbox">
+                                <label for="PDUA_LOG" class="form-check-label ">
+                                    @Html.CheckBoxFor(m => m.PDUA_LOG, new { @class = "form-check-input" }) *
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" col-md-4">
+                        <label for="PDUA_FRECUENCIA" class=" form-control-label">Frecuencia (Hz)</label>
+                    </div>
+                    <div class=" col-md-2">
+
+                        @Html.TextBoxFor(m => m.PDUA_FRECUENCIA, new { @class = "form-control", @placeholder = "°" })
+                        @Html.ValidationMessageFor(m => m.PDUA_FRECUENCIA, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+
+
+                <hr />
+                <h4> <label style="padding-left:20px;" class=" form-control-label">PDU B</label> </h4>
+                <hr />
+
+                <div class="row form-group" style="padding-left:2em;">
+                    <div class=" col-md-4">
+                        <label class=" form-control-label">Estado Alarma  (PDUB)</label>
+                    </div>
+                    <div class=" col-md-2">
+                        <div class="form-check">
+                            <div class="checkbox">
+                                <label for="PDUB_ALARMA" class="form-check-label ">
+                                    @Html.CheckBoxFor(m => m.PDUB_ALARMA, new { @class = "form-check-input" }) *
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" col-md-4">
+                        <label for="PDUB_POTENCIA" class=" form-control-label">Potencia (Kw)</label>
+                    </div>
+                    <div class=" col-md-2">
+
+                        @Html.TextBoxFor(m => m.PDUB_POTENCIA, new { @class = "form-control", @placeholder = "°" })
+                        @Html.ValidationMessageFor(m => m.PDUB_POTENCIA, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+
+                <div class="row form-group" style="padding-left:2em;">
+                    <div class=" col-md-4">
+                        <label class=" form-control-label">Revision LOG  (PDUB)</label>
+                    </div>
+                    <div class=" col-md-2">
+                        <div class="form-check">
+                            <div class="checkbox">
+                                <label for="PDUB_LOG" class="form-check-label ">
+                                    @Html.CheckBoxFor(m => m.PDUB_LOG, new { @class = "form-check-input" }) *
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" col-md-4">
+                        <label for="PDUB_FRECUENCIA" class=" form-control-label">Frecuencia (Hz)</label>
+                    </div>
+                    <div class=" col-md-2">
+
+                        @Html.TextBoxFor(m => m.PDUB_FRECUENCIA, new { @class = "form-control", @placeholder = "°" })
+                        @Html.ValidationMessageFor(m => m.PDUB_FRECUENCIA, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+
+
+                <hr />
+                <h4> <label style="padding-left:20px;" class=" form-control-label">AIRE ACONDICIONADO (20 TNS)</label> </h4>
+                <hr />
+
+                <div class="row form-group " style="padding-left:2em;">
+                    <div class=" col-md-4">
+                        <label class=" form-control-label">Revision LOG  (PDUB)</label>
+                    </div>
+                    <div class=" col-md-2">
+                        <div class="form-check">
+                            <div class="checkbox">
+                                <label for="AC20_ALARMA" class="form-check-label ">
+                                    @Html.CheckBoxFor(m => m.AC20_ALARMA, new { @class = "form-check-input" }) *
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" col-md-4">
+                        <label for="AC20_TEMP_SALIDA" class=" form-control-label">Temperatura de Salida</label>
+                    </div>
+                    <div class=" col-md-2">
+
+                        @Html.TextBoxFor(m => m.AC20_TEMP_SALIDA, new { @class = "form-control", @placeholder = "°" })
+                        @Html.ValidationMessageFor(m => m.AC20_TEMP_SALIDA, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+
+                <div class="row form-group" style="padding-left:2em;">
+                    <div class=" col-md-4">
+                        <label for="AC20_TEMP_ENTRADA" class=" form-control-label">Temperatura de Entrada</label>
+                    </div>
+                    <div class=" col-md-2">
+
+                        @Html.TextBoxFor(m => m.AC20_TEMP_ENTRADA, new { @class = "form-control", @placeholder = "°" })
+                        @Html.ValidationMessageFor(m => m.AC20_TEMP_ENTRADA, "", new { @class = "text-danger" })
+                    </div>
+                    <div class=" col-md-4">
+                        <label for="AC20_HUMEDAD" class=" form-control-label">Humedad</label>
+                    </div>
+                    <div class=" col-md-2">
+
+                        @Html.TextBoxFor(m => m.AC20_HUMEDAD, new { @class = "form-control", @placeholder = "°" })
+                        @Html.ValidationMessageFor(m => m.AC20_HUMEDAD, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <hr />
+                <h4> <label style="padding-left:20px;" class=" form-control-label">AIRE ACONDICIONADO (5 TNS)</label> </h4>
+                <hr />
+
+                <div class="row form-group" style="padding-left:2em;">
+                    <div class=" col-md-4">
+                        <label class=" form-control-label">Revision LOG  (PDUB)</label>
+                    </div>
+                    <div class=" col-md-2">
+                        <div class="form-check">
+                            <div class="checkbox">
+                                <label for="AC5_ALARMA" class="form-check-label ">
+                                    @Html.CheckBoxFor(m => m.AC5_ALARMA, new { @class = "form-check-input" }) *
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" col-md-4">
+                        <label for="AC5_TEMP_SALIDA" class=" form-control-label">Temperatura de Salida</label>
+                    </div>
+                    <div class=" col-md-2">
+
+                        @Html.TextBoxFor(m => m.AC5_TEMP_SALIDA, new { @class = "form-control", @placeholder = "°" })
+                        @Html.ValidationMessageFor(m => m.AC5_TEMP_SALIDA, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+
+                <div class="row form-group" style="padding-left:2em;">
+                    <div class=" col-md-4">
+                        <label for="AC5_TEMP_ENTRADA" class=" form-control-label">Temperatura de Entrada</label>
+                    </div>
+                    <div class=" col-md-2">
+
+                        @Html.TextBoxFor(m => m.AC5_TEMP_ENTRADA, new { @class = "form-control", @placeholder = "°" })
+                        @Html.ValidationMessageFor(m => m.AC5_TEMP_ENTRADA, "", new { @class = "text-danger" })
+                    </div>
+                    <div class=" col-md-4">
+                        <label for="AC5_HUMEDAD" class=" form-control-label">Humedad</label>
+                    </div>
+                    <div class=" col-md-2">
+
+                        @Html.TextBoxFor(m => m.AC5_HUMEDAD, new { @class = "form-control", @placeholder = "°" })
+                        @Html.ValidationMessageFor(m => m.AC5_HUMEDAD, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row form-group" style="padding-left:2em;">
+                    <div class="col col-md-4">
+                        <label class=" form-control-label">Led StandBy</label>
+                    </div>
+                    <div class="col col-md-2">
+                        <div class="form-check">
+                            <div class="checkbox">
+                                <label for="LimpArea" class="form-check-label ">
+                                    @Html.CheckBoxFor(m => m.AC5_LED, new { @class = "form-check-input" }) *
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <input class="small" /> 
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <i class="fa fa-dot-circle-o"></i>
+                </button>
+                <button type="reset" class="btn btn-danger btn-sm">
+                    <i class="fa fa-ban"></i> Reset
+                </button>
+            </div>
+        </div>
+    }
+
+        <script>
+            $(document).ready(function () {
+
+                $("#detailBtn").click(() => {  
+                    
+                })
+
+                
+                $(".btn-secondary").on('click', function () {
+                    var SelectedId = $(this).val();
+                    console.log(SelectedId);
+                    $.get('/Rooms/GetDevicesPerRack?rackName='+SelectedId, function (data) {
+                        //create a empty string to append data
+                        $("#DetailBodyT").html("");
+                        var str = "";
+                        $.each(data, function (index, item) {
+                            //get each list item returned value and add it as string
+                            str = str + "<tr><td>" + item + "</td><td><input class='small' /> </td></tr>";
+                        });
+
+                        DetailBodyT
+                        $("#DetailBodyT").html(str);
+
+                       
+
+
+                    });
+                    /*$.get('/Rooms/GetDevicesPerRack/' + SelectedId, function (data) {
+                        //create a empty string to append data
+                        var str = "";
+
+                        //loop through data
+                        $.each(data, function (index, item) {
+                            //get each list item returned value and add it as string
+                            str = str + "<tr><td>" + item.ProductName + "</td><td>" + item.Price + "</td></tr>";
+                        });
+
+                        //append item in Table body to
+                        $("#tblBody").html(str);
+
+                    });*/
+
+
+                });
+
+            });
+        </script>
+        <script>
+
+
+
+            $(document).ready(function () {
+                var CommentGlobal = "";
+
+
+                //Load item using JSON on page load
+                $.get('/Rooms/GetDevicesPerRack?rackName=11', function (data) {
+                    //create a empty string to append data
+                    var str = "";
+
+                    console.log("Klok maninto")
+                    console.log(data);
+                   
+                    
+                });
+
+
+              
+            });
+
+
+
+        </script>

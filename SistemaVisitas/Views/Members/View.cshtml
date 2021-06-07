@@ -1,0 +1,87 @@
+﻿@model IEnumerable<SistemaVisitas.Models.RegistroVisitasViewModel>
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.USERNAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HORA_INICIO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HORA_FINAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDGR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDODC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDSR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDUPSA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDUPSB)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.USERNAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HORA_INICIO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HORA_FINAL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDER)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDGR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDODC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDSR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDUPSA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDUPSB)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDREGISTRO }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDREGISTRO }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDREGISTRO })
+        </td>
+    </tr>
+}
+
+</table>

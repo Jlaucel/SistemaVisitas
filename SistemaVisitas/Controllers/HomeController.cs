@@ -26,9 +26,15 @@ namespace SistemaVisitas.Controllers
 
             List<DateTime> listtoremove = new List<DateTime>();
 
-            x.Add(new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 07, 30, 00));
+            x.Add(new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 01, 00, 00));
+            x.Add(new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 06, 00, 00));
+            x.Add(new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 07, 00, 00));
+            x.Add(new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 10, 00, 00));
             x.Add(new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 13, 00, 00));
-            x.Add(new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 17, 00, 00));
+            x.Add(new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 15, 00, 00));
+            x.Add(new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 18, 00, 00));
+            x.Add(new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 21, 00, 00));
+            x.Add(new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 23, 00, 00));
 
             foreach (var a in x) {
 
@@ -39,7 +45,7 @@ namespace SistemaVisitas.Controllers
             }
 
             x.RemoveAll(a => listtoremove.Contains(a));
-            
+                
 
             ViewBag.HoursToVisit = x;
 

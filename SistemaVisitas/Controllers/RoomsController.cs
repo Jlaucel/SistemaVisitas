@@ -18,6 +18,32 @@ namespace SistemaVisitas.Controllers
         SistemaVisitasEntitites db = new SistemaVisitasEntitites();
         private ApplicationDbContext context = new ApplicationDbContext();
 
+
+
+
+        static GeneratorRoomViewModel generatorWeek = new GeneratorRoomViewModel
+        {
+
+            IDGR = 0,
+            NIVEL_COMBUSTIBLE = 0,
+            PRUEBA_BOMBA = true,
+            CONTACTOS_BATERIA = true,
+            CARGADOR_BATERIA = 0,
+            POSICION_BREAKERS = true,
+            FUGA_ACEITE = false,
+            TABLERO_G1 = true,
+            TABLERO_G2 = true,
+            EXTINTOR = true,
+            DESAGUE_OBSTRUIDO = true,
+            VALVULA_DESAGUE = true,
+            NIVEL_GASOIL = 0,
+            LETREROS = true,
+            LIMPIEZA_GENERAL = true,
+            VALVULA_TANQUES = true,
+            
+
+        };
+
         static TimeSpan HoraInicio;
         static UPSAViewModel uPSA;
         static UPSBViewModel uPSB;
@@ -75,78 +101,6 @@ namespace SistemaVisitas.Controllers
             if (ModelState.IsValid)
             {
                 generatorRoom = model;
-                return RedirectToAction("ODCOffice");
-            }
-
-            else
-            {
-                return View();
-            }
-
-          
-        }
-
-        [Authorize]
-        public ActionResult UPSA()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult UPSA(UPSAViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                uPSA = model;
-
-                return RedirectToAction("ServerRoom");
-            }
-
-            else
-            {
-                return View();
-            }
-
-          
-        }
-
-        [Authorize]
-        public ActionResult UPSB()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult UPSB(UPSBViewModel model)
-        {
-
-            if (ModelState.IsValid)
-            {
-                uPSB = model;
-
-                return RedirectToAction("GeneratorRoom");
-            }
-
-            else
-            {
-                return View();
-            }
-         
-        }
-
-        [Authorize]
-        public ActionResult ODCOffice()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult ODCOffice(OdcOfficeViewModel model)
-        {
-
-            if (ModelState.IsValid)
-            {
-                odcOffice = model;
 
                 db.ENTRANCEROOMs.Add(entranceRoom);
                 db.GENERATORROOMs.Add(generatorRoom);
@@ -190,7 +144,143 @@ namespace SistemaVisitas.Controllers
             {
                 return View();
             }
+
+
+        }
+
+        [Authorize]
+        public ActionResult UPSA()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult UPSA(UPSAViewModel model)
+        {
+            string day = "";
+            if (DateTime.Now.DayOfWeek.ToString() == DayOfWeek.Saturday.ToString())
+            {
+
+                if (ModelState.IsValid)
+                {
+                    uPSA = model;
+                    return RedirectToAction("Generator Room");
+                }
+
+                else
+                {
+                    return View();
+                }
+
+
+
+
+
+            }
+            else {
+
+                if (ModelState.IsValid)
+                {
+                    uPSA = model;
+
+                    db.ENTRANCEROOMs.Add(entranceRoom);
+                    db.GENERATORROOMs.Add(generatorWeek);
+                    db.SERVERROOMs.Add(serverRoom);
+                    db.ODCOFFICEs.Add(odcOffice);
+                    db.UPSAs.Add(uPSA);
+                    db.UPSBs.Add(uPSB);
+                    db.SaveChanges();
+                    var x = DateTime.Now;
+
+                    RegistroVisitasViewModel registro = new RegistroVisitasViewModel()
+                    {
+
+                        IDER = entranceRoom.IDER,
+                        IDGR = generatorWeek.IDGR, //Aqui envio el mismo ID que UPSA por que los dias normales, el generator room no se le hace visita. Cambio a ultimo momento.
+                        IDSR = serverRoom.IDSR,
+                        IDODC = odcOffice.IDODC,
+                        IDUPSA = uPSA.IDUPSA,
+                        IDUPSB = uPSB.IDUPSB,
+                        HORA_INICIO = HoraInicio,
+                        HORA_FINAL = new TimeSpan(DateTime.Now.Hour, DateTime.Now.Minute, 0),
+                        FECHA = DateTime.Now,
+                        USERNAME = User.Identity.GetUserName()
+
+
+
+                    };
+
+                    db.SaveChanges();
+
+                    db.REGISTROVISITAS.Add(registro);
+
+                    db.SaveChanges();
+
+
+                    return RedirectToAction("Index", "Home");
+
+                }
+
+                else
+                {
+                    return View();
+                }
+
+
+            }
+            
+            
+            
            
+
+        }
+
+        [Authorize]
+        public ActionResult UPSB()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult UPSB(UPSBViewModel model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                uPSB = model;
+
+                return RedirectToAction("EntranceRoom");
+            }
+
+            else
+            {
+                return View();
+            }
+         
+        }
+
+        [Authorize]
+        public ActionResult ODCOffice()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ODCOffice(OdcOfficeViewModel model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                odcOffice = model;
+
+                return RedirectToAction("ServerRoom");
+            }
+
+            else
+            {
+                return View();
+            }
+
 
         }
 

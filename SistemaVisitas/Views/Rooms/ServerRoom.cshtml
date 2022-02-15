@@ -44,15 +44,7 @@
             <div class="card-header">
                 <h2><strong>SERVER ROOM</strong></h2>
             </div>
-            <div class="card-body card-block">
-                <div class=" row ">
-                    <select class="form-group" aria-label="Default select example">
-                        <option selected>Seleccione la Hora de la visita</option>
-                        <option value="1">Visita 7:30 AM</option>
-                        <option value="2">Visita 1:00 PM </option>
-                        <option value="3">Visita 5:00 PM</option>
-                    </select>
-                </div>
+            <div class="card-body card-block">               
                 <div class="row form-group" style="padding-left:2em;">
                     <div class="col col-md-3">
                         <label class=" form-control-label">Limpieza del area</label>
@@ -409,7 +401,7 @@
                         <label for="PDUA_POTENCIA" class=" form-control-label">Potencia (Kw)</label>
                     </div>
                     <div class=" col-md-2">
-                        @Html.TextBoxFor(m => m.PDUA_POTENCIA, new { @class = "form-control", @placeholder = "°", @type = "number" })
+                        @Html.TextBoxFor(m => m.PDUA_POTENCIA, new { @class = "form-control", @placeholder = "°"})
                         @Html.ValidationMessageFor(m => m.PDUA_POTENCIA, null, new { @class = "text-danger" })
                     </div>
 
@@ -502,14 +494,16 @@
 
                 <div class="row form-group " style="padding-left:2em;">
                     <div class=" col-md-4">
-                        <label class=" form-control-label">Alarma</label>
+                        <label class=" form-control-label">Estado Alarma</label>
                     </div>
                     <div class=" col-md-2">
                         <div class="form-check">
                             <div class="checkbox">
-                                <label for="AC20_ALARMA" class="form-check-label ">
-                                    @Html.CheckBoxFor(m => m.AC20_ALARMA, new { @class = "form-check-input" }) *
-                                </label>
+                                <label class="switch switch-text switch-primary">
+                                    @Html.CheckBoxFor(m => m.AC20_ALARMA, new { @class = "switch-input", @checked = "checked" })
+                                    <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                                    <span class="switch-handle" style="width:25px;"></span>
+                                </label>                                
                             </div>
                         </div>
                     </div>
@@ -550,13 +544,15 @@
 
                 <div class="row form-group" style="padding-left:2em;">
                     <div class=" col-md-4">
-                        <label class=" form-control-label">Alarma</label>
+                        <label class=" form-control-label">Estado Alarma</label>
                     </div>
                     <div class=" col-md-2">
                         <div class="form-check">
                             <div class="checkbox">
-                                <label for="AC5_ALARMA" class="form-check-label ">
-                                    @Html.CheckBoxFor(m => m.AC5_ALARMA, new { @class = "form-check-input" }) *
+                                <label class="switch switch-text switch-primary">
+                                    @Html.CheckBoxFor(m => m.AC5_ALARMA, new { @class = "switch-input", @checked = "checked" })
+                                    <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                                    <span class="switch-handle" style="width:25px;"></span>
                                 </label>
                             </div>
                         </div>
@@ -579,7 +575,7 @@
                     </div>
                     <div class=" col-md-2">
 
-                        @Html.TextBoxFor(m => m.AC5_TEMP_ENTRADA, new { @class = "form-control", @placeholder = "°" })
+                        @Html.TextBoxFor(m => m.AC5_TEMP_ENTRADA, new { @value = "0", @class = "form-control", @disabled = "disabled" })
                         @Html.ValidationMessageFor(m => m.AC5_TEMP_ENTRADA, "", new { @class = "text-danger" })
                     </div>
                     <div class=" col-md-4">

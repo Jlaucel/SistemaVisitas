@@ -49,49 +49,61 @@
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-tachometer-alt"></i>Rooms
-                            </a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="">
-                                        <h2>@Html.ActionLink("Entrance Room", "EntranceRoom", "Rooms") </h2>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <h2>@Html.ActionLink("Server Room", "ServerRoom", "Rooms") </h2>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <h2>@Html.ActionLink("Generator Room", "GeneratorRoom", "Rooms") </h2>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <h2>@Html.ActionLink("ODC Office ", "ODCOffice", "Rooms") </h2>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <h2>@Html.ActionLink("UPS A", "UPSA", "Rooms") </h2>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <h2>@Html.ActionLink("UPS B", "UPSB", "Rooms") </h2>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+
+
+                        @if (User.IsInRole("Developer"))
+                        {
+                            <li class="has-sub">
+                                <a class="js-arrow" href="#">
+                                    <i class="fas fa-tachometer-alt"></i>Rooms
+                                </a>
+                                <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                    <li>
+                                        <a href="">
+                                            <h2>@Html.ActionLink("Entrance Room", "EntranceRoom", "Rooms") </h2>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <h2>@Html.ActionLink("Server Room", "ServerRoom", "Rooms") </h2>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <h2>@Html.ActionLink("Generator Room", "GeneratorRoom", "Rooms") </h2>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <h2>@Html.ActionLink("ODC Office ", "ODCOffice", "Rooms") </h2>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <h2>@Html.ActionLink("UPS A", "UPSA", "Rooms") </h2>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <h2>@Html.ActionLink("UPS B", "UPSB", "Rooms") </h2>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
                         <li>
                             <a class="js-arrow" href="@Url.Action("Index", "Home")" ">
                                 <i class="fas fa-tachometer-alt"></i>Inicio
                             </a>
                         </li>
                         @if (User.IsInRole("Developer"))
+                        {
+                            <li>
+                                <a href="@Url.Action("Stadistics", "Home")">
+                                    <i class="fas fa-chart-bar"></i>Estadisticas
+                                </a>
+                            </li>
+                        } else if (User.IsInRole("Admin"))
                         {
                             <li>
                                 <a href="@Url.Action("Stadistics", "Home")">
@@ -136,6 +148,13 @@
                                     <i class="fas fa-chart-bar"></i>Estadisticas
                                 </a>
                             </li>
+                        }else if (User.IsInRole("Admin"))
+                        {
+                            <li>
+                                <a href="@Url.Action("Stadistics", "Home")">
+                                    <i class="fas fa-chart-bar"></i>Estadisticas
+                                </a>
+                            </li>
                         }
                         @if (User.IsInRole("Developer"))
                         {
@@ -148,53 +167,56 @@
 
 
 
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-desktop"></i>ROOMS
-                            </a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                @*
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        @if (User.IsInRole("Developer"))
+                        {
+                            <li class="has-sub">
+                                <a class="js-arrow" href="#">
+                                    <i class="fas fa-desktop"></i>ROOMS
+                                </a>
+                                <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                    @*
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 
-                                *@
-                                <li>
-                                    <a href="">
-                                        <h2>@Html.ActionLink("Entrance Room", "EntranceRoom", "Rooms") </h2>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <h2>@Html.ActionLink("Server Room", "ServerRoom", "Rooms") </h2>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <h2>@Html.ActionLink("Generator Room", "GeneratorRoom", "Rooms") </h2>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <h2>@Html.ActionLink("ODC Office ", "ODCOffice", "Rooms") </h2>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <h2>@Html.ActionLink("UPS A", "UPSA", "Rooms") </h2>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <h2>@Html.ActionLink("UPS B", "UPSB", "Rooms") </h2>
-                                    </a>
-                                </li>
+                                    *@
+                                    <li>
+                                        <a href="">
+                                            <h2>@Html.ActionLink("Entrance Room", "EntranceRoom", "Rooms") </h2>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <h2>@Html.ActionLink("Server Room", "ServerRoom", "Rooms") </h2>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <h2>@Html.ActionLink("Generator Room", "GeneratorRoom", "Rooms") </h2>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <h2>@Html.ActionLink("ODC Office ", "ODCOffice", "Rooms") </h2>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <h2>@Html.ActionLink("UPS A", "UPSA", "Rooms") </h2>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <h2>@Html.ActionLink("UPS B", "UPSB", "Rooms") </h2>
+                                        </a>
+                                    </li>
 
 
 
 
-                            </ul>
-                        </li>
+                                </ul>
+                            </li>
+                        }
                     </ul>
                 </nav>
             </div>

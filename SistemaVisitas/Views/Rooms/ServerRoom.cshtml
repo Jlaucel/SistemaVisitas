@@ -44,7 +44,7 @@
             <div class="card-header">
                 <h2><strong>SERVER ROOM</strong></h2>
             </div>
-            <div class="card-body card-block">               
+            <div class="card-body card-block">
                 <div class="row form-group" style="padding-left:2em;">
                     <div class="col col-md-3">
                         <label class=" form-control-label">Limpieza del area</label>
@@ -65,7 +65,7 @@
                     </div>
                 </div>
 
-               
+
 
                 <div class="row form-group" style="padding-left:2em;">
 
@@ -401,7 +401,7 @@
                         <label for="PDUA_POTENCIA" class=" form-control-label">Potencia (Kw)</label>
                     </div>
                     <div class=" col-md-2">
-                        @Html.TextBoxFor(m => m.PDUA_POTENCIA, new { @class = "form-control", @placeholder = "°"})
+                        @Html.TextBoxFor(m => m.PDUA_POTENCIA, new { @class = "form-control", @placeholder = "°" })
                         @Html.ValidationMessageFor(m => m.PDUA_POTENCIA, null, new { @class = "text-danger" })
                     </div>
 
@@ -489,102 +489,115 @@
 
 
                 <hr />
-                <h4> <label style="padding-left:20px;" class=" form-control-label">AIRE ACONDICIONADO (20 TNS)</label> </h4>
-                <hr />
+                <label for="aire">Elije el aire que se encuentra funcionando:</label>
 
-                <div class="row form-group " style="padding-left:2em;">
-                    <div class=" col-md-4">
-                        <label class=" form-control-label">Estado Alarma</label>
-                    </div>
-                    <div class=" col-md-2">
-                        <div class="form-check">
-                            <div class="checkbox">
-                                <label class="switch switch-text switch-primary">
-                                    @Html.CheckBoxFor(m => m.AC20_ALARMA, new { @class = "switch-input", @checked = "checked" })
-                                    <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
-                                    <span class="switch-handle" style="width:25px;"></span>
-                                </label>                                
+                <select name="aire" id="aire">
+                    <option value="20">20 Toneladas</option>
+                    <option value="5">5 Toneladas</option>
+
+                </select>
+
+                <div id="ac20">
+                    <h4> <label style="padding-left:20px;" class=" form-control-label">AIRE ACONDICIONADO (20 TNS)</label> </h4>
+                    <hr />
+
+                    <div class="row form-group " style="padding-left:2em;">
+                        <div class=" col-md-4">
+                            <label class=" form-control-label">Estado Alarma</label>
+                        </div>
+                        <div class=" col-md-2">
+                            <div class="form-check">
+                                <div class="checkbox">
+                                    <label class="switch switch-text switch-primary">
+                                        @Html.CheckBoxFor(m => m.AC20_ALARMA, new { @class = "switch-input", @checked = "checked" })
+                                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                                        <span class="switch-handle" style="width:25px;"></span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
+
+                        <div class=" col-md-4">
+                            <label for="AC20_TEMP_SALIDA" class=" form-control-label">Temperatura de Salida</label>
+                        </div>
+                        <div class=" col-md-2">
+
+                            @Html.TextBoxFor(m => m.AC20_TEMP_SALIDA, new { @class = "form-control", @placeholder = "°" })
+                            @Html.ValidationMessageFor(m => m.AC20_TEMP_SALIDA, "", new { @class = "text-danger" })
+                        </div>
+
                     </div>
 
-                    <div class=" col-md-4">
-                        <label for="AC20_TEMP_SALIDA" class=" form-control-label">Temperatura de Salida</label>
-                    </div>
-                    <div class=" col-md-2">
+                    <div class="row form-group" style="padding-left:2em;">
+                        <div class=" col-md-4">
+                            <label for="AC20_TEMP_ENTRADA" class=" form-control-label">Temperatura de Entrada</label>
+                        </div>
+                        <div class=" col-md-2">
 
-                        @Html.TextBoxFor(m => m.AC20_TEMP_SALIDA, new { @class = "form-control", @placeholder = "°" })
-                        @Html.ValidationMessageFor(m => m.AC20_TEMP_SALIDA, "", new { @class = "text-danger" })
-                    </div>
+                            @Html.TextBoxFor(m => m.AC20_TEMP_ENTRADA, new { @class = "form-control", @placeholder = "°" })
+                            @Html.ValidationMessageFor(m => m.AC20_TEMP_ENTRADA, "", new { @class = "text-danger" })
+                        </div>
+                        <div class=" col-md-4">
+                            <label for="AC20_HUMEDAD" class=" form-control-label">Humedad</label>
+                        </div>
+                        <div class=" col-md-2">
 
+                            @Html.TextBoxFor(m => m.AC20_HUMEDAD, new { @class = "form-control", @placeholder = "°" })
+                            @Html.ValidationMessageFor(m => m.AC20_HUMEDAD, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
                 </div>
-
-                <div class="row form-group" style="padding-left:2em;">
-                    <div class=" col-md-4">
-                        <label for="AC20_TEMP_ENTRADA" class=" form-control-label">Temperatura de Entrada</label>
-                    </div>
-                    <div class=" col-md-2">
-
-                        @Html.TextBoxFor(m => m.AC20_TEMP_ENTRADA, new { @class = "form-control", @placeholder = "°" })
-                        @Html.ValidationMessageFor(m => m.AC20_TEMP_ENTRADA, "", new { @class = "text-danger" })
-                    </div>
-                    <div class=" col-md-4">
-                        <label for="AC20_HUMEDAD" class=" form-control-label">Humedad</label>
-                    </div>
-                    <div class=" col-md-2">
-
-                        @Html.TextBoxFor(m => m.AC20_HUMEDAD, new { @class = "form-control", @placeholder = "°" })
-                        @Html.ValidationMessageFor(m => m.AC20_HUMEDAD, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
                 <hr />
                 <h4> <label style="padding-left:20px;" class=" form-control-label">AIRE ACONDICIONADO (5 TNS)</label> </h4>
                 <hr />
+                <div id="ac5">
 
-                <div class="row form-group" style="padding-left:2em;">
-                    <div class=" col-md-4">
-                        <label class=" form-control-label">Estado Alarma</label>
-                    </div>
-                    <div class=" col-md-2">
-                        <div class="form-check">
-                            <div class="checkbox">
-                                <label class="switch switch-text switch-primary">
-                                    @Html.CheckBoxFor(m => m.AC5_ALARMA, new { @class = "switch-input", @checked = "checked" })
-                                    <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
-                                    <span class="switch-handle" style="width:25px;"></span>
-                                </label>
+
+
+                    <div class="row form-group" style="padding-left:2em;">
+                        <div class=" col-md-4">
+                            <label class=" form-control-label">Estado Alarma</label>
+                        </div>
+                        <div class=" col-md-2">
+                            <div class="form-check">
+                                <div class="checkbox">
+                                    <label class="switch switch-text switch-primary">
+                                        @Html.CheckBoxFor(m => m.AC5_ALARMA, new { @class = "switch-input", @checked = "checked" })
+                                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                                        <span class="switch-handle" style="width:25px;"></span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
+
+                        <div class=" col-md-4">
+                            <label for="AC5_TEMP_SALIDA" class=" form-control-label">Temperatura de Salida</label>
+                        </div>
+                        <div class=" col-md-2">
+
+                            @Html.TextBoxFor(m => m.AC5_TEMP_SALIDA, new { @class = "form-control", @placeholder = "°" })
+                            @Html.ValidationMessageFor(m => m.AC5_TEMP_SALIDA, "", new { @class = "text-danger" })
+                        </div>
+
                     </div>
 
-                    <div class=" col-md-4">
-                        <label for="AC5_TEMP_SALIDA" class=" form-control-label">Temperatura de Salida</label>
-                    </div>
-                    <div class=" col-md-2">
+                    <div class="row form-group" style="padding-left:2em;">
+                        <div class=" col-md-4">
+                            <label for="AC5_TEMP_ENTRADA" class=" form-control-label">Temperatura de Entrada</label>
+                        </div>
+                        <div class=" col-md-2">
 
-                        @Html.TextBoxFor(m => m.AC5_TEMP_SALIDA, new { @class = "form-control", @placeholder = "°" })
-                        @Html.ValidationMessageFor(m => m.AC5_TEMP_SALIDA, "", new { @class = "text-danger" })
-                    </div>
+                            @Html.TextBoxFor(m => m.AC5_TEMP_ENTRADA, new { @value = "0", @class = "form-control", @disabled = "disabled" })
+                            @Html.ValidationMessageFor(m => m.AC5_TEMP_ENTRADA, "", new { @class = "text-danger" })
+                        </div>
+                        <div class=" col-md-4">
+                            <label for="AC5_HUMEDAD" class=" form-control-label">Humedad</label>
+                        </div>
+                        <div class=" col-md-2">
 
-                </div>
-
-                <div class="row form-group" style="padding-left:2em;">
-                    <div class=" col-md-4">
-                        <label for="AC5_TEMP_ENTRADA" class=" form-control-label">Temperatura de Entrada</label>
-                    </div>
-                    <div class=" col-md-2">
-
-                        @Html.TextBoxFor(m => m.AC5_TEMP_ENTRADA, new { @value = "0", @class = "form-control", @disabled = "disabled" })
-                        @Html.ValidationMessageFor(m => m.AC5_TEMP_ENTRADA, "", new { @class = "text-danger" })
-                    </div>
-                    <div class=" col-md-4">
-                        <label for="AC5_HUMEDAD" class=" form-control-label">Humedad</label>
-                    </div>
-                    <div class=" col-md-2">
-
-                        @Html.TextBoxFor(m => m.AC5_HUMEDAD, new { @class = "form-control", @placeholder = "°" })
-                        @Html.ValidationMessageFor(m => m.AC5_HUMEDAD, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(m => m.AC5_HUMEDAD, new { @class = "form-control", @placeholder = "°" })
+                            @Html.ValidationMessageFor(m => m.AC5_HUMEDAD, "", new { @class = "text-danger" })
+                        </div>
                     </div>
                 </div>
 
@@ -603,7 +616,7 @@
                     </div>
                 </div>
 
-                <input class="small" /> 
+                <input class="small" />
             </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary btn-sm">
@@ -669,6 +682,51 @@
 
             $(document).ready(function () {
                 var CommentGlobal = "";
+                $('#ac5').hide();
+                $('#AC5_TEMP_SALIDA').val('1');
+                $('#AC5_TEMP_ENTRADA').val('1');
+                $('#AC5_HUMEDAD').val('1');
+
+
+                $('#aire').change(function () {
+                    var selectedValue = $(this).val(); // get the selected value
+                   
+
+                    // Depending on the value selected you can show or hide other elements:
+
+                    if (selectedValue == "20") {
+                        $('#ac5').hide();  // hide element1
+
+                        $('#AC5_TEMP_SALIDA').val('1');
+                        $('#AC5_TEMP_ENTRADA').val('1');
+                        $('#AC5_HUMEDAD').val('1');
+                        
+                        
+                        
+                        $('#ac20').show();  // show element1
+                       
+                        console.log('20');
+                    }
+                    if (selectedValue == "5"){
+
+                      //  document.getElementById('AC20_TEMP_ENTRADA').attributes. = '';  // hide element1
+                        console.log('5');
+                        $('#ac20').hide();  // hide element1
+
+                        $('#AC20_TEMP_SALIDA').val('1');
+                        $('#AC20_TEMP_ENTRADA').val('1');
+                        $('#AC20_HUMEDAD').val('1')
+                          
+                      
+                        $('#ac5').show();  // show element1
+                     
+                    }
+                });
+
+
+
+
+
 
 
                 //Load item using JSON on page load

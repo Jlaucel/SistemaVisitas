@@ -547,11 +547,11 @@
                         </div>
                     </div>
                 </div>
-                <hr />
-                <h4> <label style="padding-left:20px;" class=" form-control-label">AIRE ACONDICIONADO (5 TNS)</label> </h4>
-                <hr />
+               
                 <div id="ac5">
-
+                    <hr />
+                    <h4> <label style="padding-left:20px;" class=" form-control-label">AIRE ACONDICIONADO (5 TNS)</label> </h4>
+                    <hr />
 
 
                     <div class="row form-group" style="padding-left:2em;">
@@ -599,22 +599,23 @@
                             @Html.ValidationMessageFor(m => m.AC5_HUMEDAD, "", new { @class = "text-danger" })
                         </div>
                     </div>
-                </div>
-
-                <div class="row form-group" style="padding-left:2em;">
-                    <div class="col col-md-4">
-                        <label class=" form-control-label">Led StandBy</label>
-                    </div>
-                    <div class="col col-md-2">
-                        <div class="form-check">
-                            <div class="checkbox">
-                                <label for="LimpArea" class="form-check-label ">
-                                    @Html.CheckBoxFor(m => m.AC5_LED, new { @class = "form-check-input" }) *
-                                </label>
+                    <div class="row form-group" style="padding-left:2em;">
+                        <div class="col col-md-4">
+                            <label class=" form-control-label">Led StandBy</label>
+                        </div>
+                        <div class="col col-md-2">
+                            <div class="form-check">
+                                <div class="checkbox">
+                                    <label for="LimpArea" class="form-check-label ">
+                                        @Html.CheckBoxFor(m => m.AC5_LED, new { @class = "form-check-input" }) *
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+              
 
                 <input class="small" />
             </div>

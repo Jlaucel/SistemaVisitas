@@ -164,7 +164,6 @@ namespace SistemaVisitas.Controllers
                 if (ModelState.IsValid)
                 {
                     uPSA = model;
-
                     return RedirectToAction("GeneratorRoom");
                 }
 

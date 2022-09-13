@@ -27,6 +27,7 @@ namespace SistemaVisitas.Controllers
             IDGR = 0,
             NIVEL_COMBUSTIBLE = 0,
             PRUEBA_BOMBA = true,
+
             CONTACTOS_BATERIA = true,
             CARGADOR_BATERIA = 0,
             POSICION_BREAKERS = true,

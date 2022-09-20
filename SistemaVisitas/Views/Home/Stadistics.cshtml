@@ -6,12 +6,19 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 
+   
 <div class="row">
     <h3 class="title-1 m-b-25">UPS A - Reporte</h3>
 
 
     <div class="table-responsive table--no-card m-b-40">
-        <table class="table table-borderless table-striped table-earning">
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+                <button id="BTN_UPSA" type="button" class="btn btn-success">Export EXCEL</button>
+            </div>
+
+        </div>
+        <table id="UPSA_TABLE" class="table table-borderless table-striped table-earning">
             <thead>
                 <tr>
                     @foreach (System.Data.DataColumn col in Model.Columns)
@@ -42,8 +49,16 @@
     </div>
     <h3 class="title-1 m-b-25">UPS B - Reporte</h3>
 
+
+    @* UPS B TABLA*@
     <div class="table-responsive table--no-card m-b-40">
-        <table class="table table-borderless table-striped table-earning">
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+                <button id="BTN_UPSB" type="button" class="btn btn-success">Export EXCEL</button>
+            </div>
+          
+        </div>
+        <table id="UPSB_TABLE" class="table table-borderless table-striped table-earning">
             <thead>
                 <tr>
                     @foreach (System.Data.DataColumn col in ViewBag.UPSB.Columns)
@@ -75,7 +90,13 @@
     <h3 class="title-1 m-b-25">Aire 20T - Reporte</h3>
 
     <div class="table-responsive table--no-card m-b-40">
-        <table class="table table-borderless table-striped table-earning">
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+                <button id="BTN_AIR20" type="button" class="btn btn-success">Export EXCEL</button>
+            </div>
+
+        </div>
+        <table id="AIR20_TABLE" class="table table-borderless table-striped table-earning">
             <thead>
                 <tr>
                     @foreach (System.Data.DataColumn col in ViewBag.AC20.Columns)
@@ -107,7 +128,13 @@
     <h3 class="title-1 m-b-25">Aire 5T - Reporte</h3>
 
     <div class="table-responsive table--no-card m-b-40">
-        <table class="table table-borderless table-striped table-earning">
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+                <button id="BTN_AIR5" type="button" class="btn btn-success">Export EXCEL</button>
+            </div>
+
+        </div>
+        <table id="AIR5_TABLE" class="table table-borderless table-striped table-earning">
             <thead>
                 <tr>
                     @foreach (System.Data.DataColumn col in ViewBag.AC5.Columns)
@@ -139,7 +166,13 @@
     <h3 class="title-1 m-b-25">PDUA - Reporte</h3>
 
     <div class="table-responsive table--no-card m-b-40">
-        <table class="table table-borderless table-striped table-earning">
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+                <button id="BTN_PDUA" type="button" class="btn btn-success">Export EXCEL</button>
+            </div>
+
+        </div>
+        <table id="PDUA_TABLE" class="table table-borderless table-striped table-earning">
             <thead>
                 <tr>
                     @foreach (System.Data.DataColumn col in ViewBag.PDUA.Columns)
@@ -171,7 +204,13 @@
     <h3 class="title-1 m-b-25">PDUB - Reporte</h3>
 
     <div class="table-responsive table--no-card m-b-40">
-        <table class="table table-borderless table-striped table-earning">
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+                <button id="BTN_PDUB" type="button" class="btn btn-success">Export EXCEL</button>
+            </div>
+
+        </div>
+        <table id="PDUB_TABLE" class="table table-borderless table-striped table-earning">
             <thead>
                 <tr>
                     @foreach (System.Data.DataColumn col in ViewBag.PDUB.Columns)
@@ -179,7 +218,7 @@
                         if (@col.Caption == "False")
                         {
 
-                         <th>>xxx</th>
+                            <th>>xxx</th>
 
                         }
                         else
@@ -315,3 +354,88 @@
 
     </div>
 </div>
+
+
+
+    <script>
+        $(document).ready(function () {
+            var d = new Date();
+
+            var month = d.getMonth() + 1;
+            var day = d.getDate();
+
+            var output = d.getFullYear() + '/' +
+                (month < 10 ? '0' : '') + month + '/' +
+                (day < 10 ? '0' : '') + day;
+
+
+
+            $("#BTN_UPSA").click(function () {
+                $("#UPSA_TABLE").table2excel({
+                    // exclude CSS class
+                    exclude: ".noExl",
+                    name: "UPSA",
+                    filename: "UPSA_REPORTE_" + output, //do not include extension
+                    fileext: ".xlsx" // file extension
+                });
+            });
+
+            $("#BTN_UPSB").click(function () {
+                $("#UPSB_TABLE").table2excel({
+                    // exclude CSS class
+                    exclude: ".noExl",
+                    name: "UPSB",
+                    filename: "UPSB_REPORTE_" + output, //do not include extension
+                    fileext: ".xlsx" // file extension
+                });
+            });
+
+            $("#BTN_AIR20").click(function () {
+                $("#AIR20_TABLE").table2excel({
+                    // exclude CSS class
+                    exclude: ".noExl",
+                    name: "AIRE 20 TONELADAS",
+                    filename: "AIRE_20TON_REPORTE_" + output, //do not include extension
+                    fileext: ".xlsx" // file extension
+                });
+            });
+
+
+            $("#BTN_AIR5").click(function () {
+                $("#AIR5_TABLE").table2excel({
+                    // exclude CSS class
+                    exclude: ".noExl",
+                    name: "AIRE 5 TONELADAS",
+                    filename: "AIRE_5TON_REPORTE_" + output, //do not include extension
+                    fileext: ".xlsx" // file extension
+                });
+            });
+
+
+            $("#BTN_PDUA").click(function () {
+                $("#PDUA_TABLE").table2excel({
+                    // exclude CSS class
+                    exclude: ".noExl",
+                    name: "PDUA ",
+                    filename: "PDUA_REPORTE_" + output, //do not include extension
+                    fileext: ".xlsx" // file extension
+                });
+            });
+
+            $("#BTN_PDUB").click(function () {
+                $("#PDUB_TABLE").table2excel({
+                    // exclude CSS class
+                    exclude: ".noExl",
+                    name: "PDUB",
+                    filename: "PDUB_REPORTE_" + output, //do not include extension
+                    fileext: ".xlsx" // file extension
+                });
+            });
+
+
+           
+        });
+
+
+
+    </script>

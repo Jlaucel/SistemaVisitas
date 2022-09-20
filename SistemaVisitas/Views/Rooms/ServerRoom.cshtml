@@ -616,8 +616,10 @@
                         <div class="col col-md-2">
                             <div class="form-check">
                                 <div class="checkbox">
-                                    <label for="LimpArea" class="form-check-label ">
-                                        @Html.CheckBoxFor(m => m.AC5_LED, new { @class = "form-check-input" }) *
+                                    <label class="switch switch-text switch-primary">
+                                        @Html.CheckBoxFor(m => m.AC5_LED, new { @class = "switch-input", @checked = "checked" })
+                                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                                        <span class="switch-handle" style="width:25px;"></span>
                                     </label>
                                 </div>
                             </div>

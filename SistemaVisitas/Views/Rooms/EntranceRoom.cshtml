@@ -21,6 +21,15 @@
             <div class="card-body card-block">
 
                 <div class="row form-group" style="padding-left:2em">
+
+                    <div class=" col-md-4">
+                        <label for="TEMPERATURA" class=" form-control-label">Temperatura de Area</label>
+                    </div>
+                    <div class=" col-md-2">
+
+                        @Html.TextBoxFor(m => m.TEMPERATURA, new { @class = "form-control", @placeholder = "°" })
+                        @Html.ValidationMessageFor(m => m.TEMPERATURA, "", new { @class = "text-danger" })
+                    </div>
                     <div class=" col-md-4">
                         <label class=" form-control-label">Limpieza del Area</label>
                     </div>
@@ -32,19 +41,12 @@
                                     <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
                                     <span class="switch-handle" style="width:25px;"></span>
                                 </label>
-                                
+
                             </div>
                         </div>
                     </div>
 
-                    <div class=" col-md-4">
-                        <label for="TEMPERATURA" class=" form-control-label">Temperatura de Area</label>
-                    </div>
-                    <div class=" col-md-2">
 
-                        @Html.TextBoxFor(m => m.TEMPERATURA, new { @class = "form-control", @placeholder = "°" })
-                        @Html.ValidationMessageFor(m => m.TEMPERATURA, "", new { @class = "text-danger" })
-                    </div>
 
                 </div>
                 <div class="row form-group" style="padding-left:2em;">

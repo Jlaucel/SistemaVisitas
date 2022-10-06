@@ -19,6 +19,8 @@ namespace SistemaVisitas.Controllers
         public ActionResult Index()
         {
 
+            int day = DateTime.Now.Hour;
+
             var items = db.REGISTROVISITAS.ToList();
 
             var lastVisit = db.REGISTROVISITAS.OrderByDescending(a => a.FECHA).FirstOrDefault();

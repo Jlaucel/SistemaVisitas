@@ -158,8 +158,9 @@ namespace SistemaVisitas.Controllers
         [HttpPost]
         public ActionResult UPSA(UPSAViewModel model)
         {
-            string day = "";
-            if (DateTime.Now.DayOfWeek.ToString() == DayOfWeek.Saturday.ToString())
+           
+
+            if ((DateTime.Now.DayOfWeek.ToString() == DayOfWeek.Saturday.ToString()) && DateTime.Now.Hour > 10 && DateTime.Now.Hour < 13 )
             {
 
                 if (ModelState.IsValid)

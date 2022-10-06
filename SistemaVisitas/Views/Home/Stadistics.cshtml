@@ -5,13 +5,31 @@
 }
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
+<style >
 
+    .tableFixHead {
+        overflow: auto;
+        height: 700px;
+        width: auto;
+    }
+
+        .tableFixHead thead th {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .tableFixHead tbody th {
+            position: sticky;
+            left: 0;
+        }
+</style>
    
 <div class="row">
     <h3 class="title-1 m-b-25">UPS A - Reporte</h3>
 
 
-    <div class="table-responsive table--no-card m-b-40">
+    <div class="table-responsive table--no-card m-b-40 tableFixHead">
         <div class="btn-group btn-group-justified" role="group" aria-label="...">
             <div class="btn-group" role="group">
                 <button id="BTN_UPSA" type="button" class="btn btn-success">Export EXCEL</button>
@@ -51,7 +69,7 @@
 
 
     @* UPS B TABLA*@
-    <div class="table-responsive table--no-card m-b-40">
+    <div class="table-responsive table--no-card m-b-40 tableFixHead">
         <div class="btn-group btn-group-justified" role="group" aria-label="...">
             <div class="btn-group" role="group">
                 <button id="BTN_UPSB" type="button" class="btn btn-success">Export EXCEL</button>
@@ -89,7 +107,7 @@
     </div>
     <h3 class="title-1 m-b-25">Aire 20T - Reporte</h3>
 
-    <div class="table-responsive table--no-card m-b-40">
+    <div class="table-responsive table--no-card m-b-40 tableFixHead">
         <div class="btn-group btn-group-justified" role="group" aria-label="...">
             <div class="btn-group" role="group">
                 <button id="BTN_AIR20" type="button" class="btn btn-success">Export EXCEL</button>
@@ -127,7 +145,7 @@
     </div>
     <h3 class="title-1 m-b-25">Aire 5T - Reporte</h3>
 
-    <div class="table-responsive table--no-card m-b-40">
+    <div class="table-responsive table--no-card m-b-40 tableFixHead">
         <div class="btn-group btn-group-justified" role="group" aria-label="...">
             <div class="btn-group" role="group">
                 <button id="BTN_AIR5" type="button" class="btn btn-success">Export EXCEL</button>
@@ -165,7 +183,7 @@
     </div>
     <h3 class="title-1 m-b-25">PDUA - Reporte</h3>
 
-    <div class="table-responsive table--no-card m-b-40">
+    <div class="table-responsive table--no-card m-b-40 tableFixHead">
         <div class="btn-group btn-group-justified" role="group" aria-label="...">
             <div class="btn-group" role="group">
                 <button id="BTN_PDUA" type="button" class="btn btn-success">Export EXCEL</button>
@@ -203,7 +221,7 @@
     </div>
     <h3 class="title-1 m-b-25">PDUB - Reporte</h3>
 
-    <div class="table-responsive table--no-card m-b-40">
+    <div class="table-responsive table--no-card m-b-40 tableFixHead">
         <div class="btn-group btn-group-justified" role="group" aria-label="...">
             <div class="btn-group" role="group">
                 <button id="BTN_PDUB" type="button" class="btn btn-success">Export EXCEL</button>
@@ -257,7 +275,7 @@
     <h2 class="title-1 m-b-25">Revisiones Realizadas</h2>
 
 
-    <div class="table-responsive table--no-card m-b-40">
+    <div class="table-responsive table--no-card m-b-40 tableFixHead">
 
 
         <table class="table table-borderless table-striped table-earning">

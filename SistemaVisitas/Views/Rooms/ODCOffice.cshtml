@@ -19,23 +19,25 @@
 
                 <label class=" form-control-label"><strong>Monitorear </strong></label>
 
-            </div>            <div class="row form-group" style="padding-left:2em;">
-                <div class=" col-md-4">
-                    <label class=" form-control-label">Smart Capacity</label>
-                </div>
-                <div class=" col-md-2">
-                    <div class="form-check">
-                        <div class="checkbox">
-                            <label class="switch switch-text switch-primary">
-                                @Html.CheckBoxFor(m => m.SMART_CAPACITY, new { @class = "switch-input", @checked = "checked" })
-                                <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
-                                <span class="switch-handle" style="width:25px;"></span>
-                            </label>
-                        </div>
+            </div>
+            <div class="row form-group" style="padding-left:2em;">
+                @* <div class=" col-md-4">
+                <label class=" form-control-label">Smart Capacity</label>
+            </div>
+            <div class=" col-md-2">
+                <div class="form-check">
+                    <div class="checkbox">
+                        <label class="switch switch-text switch-primary">
+                            @Html.CheckBoxFor(m => m.SMART_CAPACITY, new { @class = "switch-input", @checked = "checked" })
+                            <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                            <span class="switch-handle" style="width:25px;"></span>
+                        </label>
                     </div>
                 </div>
+            </div>
+                *@
                 <div class=" col-md-4">
-                    <label class=" form-control-label">Ambiente DataCenter</label>
+                    <label class=" form-control-label">Smart Control(Ambientes)</label>
                 </div>
                 <div class=" col-md-2">
                     <div class="form-check">
@@ -170,36 +172,37 @@
                     </div>
                 </div>
             </div>
-            <div class="row form-group" style="padding-left:2em;">
-                <div class=" col-md-4">
-                    <label class=" form-control-label">VIOS1</label>
-                </div>
-                <div class=" col-md-2">
-                    <div class="form-check">
-                        <div class="checkbox">
-                            <label class="switch switch-text switch-primary">
-                                @Html.CheckBoxFor(m => m.VIOS1, new { @class = "switch-input", @checked = "checked" })
-                                <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
-                                <span class="switch-handle" style="width:25px;"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class=" col-md-4">
-                    <label class=" form-control-label">VIOS2</label>
-                </div>
-                <div class=" col-md-2">
-                    <div class="form-check">
-                        <div class="checkbox">
-                            <label class="switch switch-text switch-primary">
-                                @Html.CheckBoxFor(m => m.VIOS2, new { @class = "switch-input", @checked = "checked" })
-                                <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
-                                <span class="switch-handle" style="width:25px;"></span>
-                            </label>
-                        </div>
+            @*  <div class="row form-group" style="padding-left:2em;">
+            <div class=" col-md-4">
+                <label class=" form-control-label">VIOS1</label>
+            </div>
+            <div class=" col-md-2">
+                <div class="form-check">
+                    <div class="checkbox">
+                        <label class="switch switch-text switch-primary">
+                            @Html.CheckBoxFor(m => m.VIOS1, new { @class = "switch-input", @checked = "checked" })
+                            <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                            <span class="switch-handle" style="width:25px;"></span>
+                        </label>
                     </div>
                 </div>
             </div>
+            <div class=" col-md-4">
+                <label class=" form-control-label">VIOS2</label>
+            </div>
+            <div class=" col-md-2">
+                <div class="form-check">
+                    <div class="checkbox">
+                        <label class="switch switch-text switch-primary">
+                            @Html.CheckBoxFor(m => m.VIOS2, new { @class = "switch-input", @checked = "checked" })
+                            <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                            <span class="switch-handle" style="width:25px;"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+            *@
             <div class="row form-group" style="padding-left:2em;">
                 <div class=" col-md-4">
                     <label class=" form-control-label">Librerias TL01</label>
@@ -245,7 +248,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
 
 

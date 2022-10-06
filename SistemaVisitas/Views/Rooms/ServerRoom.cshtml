@@ -61,13 +61,69 @@
                         </div>
                     </div>
                 </div>
+                @*   <div class="row form-group" style="padding-left:2em;">
+            <div class="col col-md-3">
+                <label class=" form-control-label">Alertas en los Hardware</label>
+            </div>
+        </div>
+                *@
+                <hr />
+                <h4> <label style="padding-left:20px;" class=" form-control-label">PDU A</label> </h4>
+                <hr />
+
+
                 <div class="row form-group" style="padding-left:2em;">
-                    <div class="col col-md-3">
-                        <label class=" form-control-label">Alertas en los Hardware</label>
+                    <div class=" col-md-4">
+                        <label class=" form-control-label">Estado Alarma  (PDUA)</label>
                     </div>
+                    <div class=" col-md-2">
+                        <div class="form-check">
+                            <div class="checkbox">
+                                <label class="switch switch-text switch-primary">
+                                    @Html.CheckBoxFor(m => m.PDUA_ALARMA, new { @class = "switch-input", @checked = "checked" })
+                                    <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                                    <span class="switch-handle" style="width:25px;"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" col-md-4">
+                        <label for="PDUA_POTENCIA" class=" form-control-label">Potencia (Kw)</label>
+                    </div>
+                    <div class=" col-md-2">
+                        @Html.TextBoxFor(m => m.PDUA_POTENCIA, new { @class = "form-control", @placeholder = "°" })
+                        @Html.ValidationMessageFor(m => m.PDUA_POTENCIA, null, new { @class = "text-danger" })
+                    </div>
+
                 </div>
 
+                <div class="row form-group" style="padding-left:2em;">
+                    <div class=" col-md-4">
+                        <label class=" form-control-label">Revision LOG  (PDUA)</label>
+                    </div>
+                    <div class=" col-md-2">
+                        <div class="form-check">
+                            <div class="checkbox">
+                                <label class="switch switch-text switch-primary">
+                                    @Html.CheckBoxFor(m => m.PDUA_LOG, new { @class = "switch-input", @checked = "checked" })
+                                    <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                                    <span class="switch-handle" style="width:25px;"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class=" col-md-4">
+                        <label for="PDUA_FRECUENCIA" class=" form-control-label">Frecuencia (Hz)</label>
+                    </div>
+                    <div class=" col-md-2">
+
+                        @Html.TextBoxFor(m => m.PDUA_FRECUENCIA, new { @class = "form-control", @placeholder = "°" })
+                        @Html.ValidationMessageFor(m => m.PDUA_FRECUENCIA, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
 
                 <div class="row form-group" style="padding-left:2em;">
 
@@ -191,252 +247,13 @@
                             Detalle Rack
                         </button>
                     </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2">
-                        <div class="checkbox">
-                            <small>Rack  21</small>
-
-                        </div>
-                    </div>
-                    <label class="switch switch-text switch-primary">
-                        @Html.CheckBoxFor(m => m.RACK21_STATUS, new { @class = "switch-input", @checked = "checked" })
-                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
-                        <span class="switch-handle" style="width:25px;"></span>
-                    </label>
-                    <div class="col-xs-3 col-sm-3 col-md-3">
-                        <button id="detailBtn" value="21" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
-                            Detalle Rack
-                        </button>
-                    </div>
-                </div>
-                <div class="row form-group" style="padding-left:2em;">
-
-                    <div class="col-xs-2 col-sm-2 col-md-2">
-                        <div class="checkbox">
-                            <small>Rack 22</small>
-
-                        </div>
-                    </div>
-                    <label class="switch switch-text switch-primary">
-                        @Html.CheckBoxFor(m => m.RACK22_STATUS, new { @class = "switch-input", @checked = "checked" })
-                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
-                        <span class="switch-handle" style="width:25px;"></span>
-                    </label>
-                    <div class="col-xs-3 col-sm-3 col-md-3">
-                        <button id="detailBtn" value="22" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
-                            Detalle Rack
-                        </button>
-                    </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2">
-                        <div class="checkbox">
-                            <small>Rack 23</small>
-
-                        </div>
-                    </div>
-                    <label class="switch switch-text switch-primary">
-                        @Html.CheckBoxFor(m => m.RACK23_STATUS, new { @class = "switch-input", @checked = "checked" })
-                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
-                        <span class="switch-handle" style="width:25px;"></span>
-                    </label>
-                    <div class="col-xs-3 col-sm-3 col-md-3">
-                        <button id="detailBtn" value="23" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
-                            Detalle Rack
-                        </button>
-                    </div>
-                </div>
-                <div class="row form-group" style="padding-left:2em;">
-                    <div class="col-xs-2 col-sm-2 col-md-2">
-                        <div class="checkbox">
-                            <small>Rack 24</small>
-
-                        </div>
-                    </div>
-                    <label class="switch switch-text switch-primary">
-                        @Html.CheckBoxFor(m => m.RACK24_STATUS, new { @class = "switch-input", @checked = "checked" })
-                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
-                        <span class="switch-handle" style="width:25px;"></span>
-                    </label>
-                    <div class="col-xs-3 col-sm-3 col-md-3">
-                        <button id="detailBtn" value="24" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
-                            Detalle Rack
-                        </button>
-                    </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2">
-                        <div class="checkbox">
-                            <small>Rack 25A</small>
-                        </div>
-                    </div>
-                    <label class="switch switch-text switch-primary">
-                        @Html.CheckBoxFor(m => m.RACK25A_STATUS, new { @class = "switch-input", @checked = "checked" })
-                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
-                        <span class="switch-handle" style="width:25px;"></span>
-                    </label>
-                    <div class="col-xs-3 col-sm-3 col-md-3">
-                        <button id="detailBtn" value="25B" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
-                            Detalle Rack
-                        </button>
-                    </div>
-                </div>
-                <div class="row form-group" style="padding-left:2em;">
-
-                    <div class="col-xs-2 col-sm-2 col-md-2">
-                        <div class="checkbox">
-                            <small>Rack 25B</small>
-
-                        </div>
-                    </div>
-                    <label class="switch switch-text switch-primary">
-                        @Html.CheckBoxFor(m => m.RACK25B_STATUS, new { @class = "switch-input", @checked = "checked" })
-                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
-                        <span class="switch-handle" style="width:25px;"></span>
-                    </label>
-                    <div class="col-xs-3 col-sm-3 col-md-3">
-                        <button id="detailBtn" value="25B" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
-                            Detalle Rack
-                        </button>
-                    </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2">
-                        <div class="checkbox">
-                            <small>Rack 26A</small>
-                        </div>
-                    </div>
-                    <label class="switch switch-text switch-primary">
-                        @Html.CheckBoxFor(m => m.RACK26A_STATUS, new { @class = "switch-input", @checked = "checked" })
-                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
-                        <span class="switch-handle" style="width:25px;"></span>
-                    </label>
-                    <div class="col-xs-3 col-sm-3 col-md-3">
-                        <button id="detailBtn" value="26A" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
-                            Detalle Rack
-                        </button>
-                    </div>
-                </div>
-                <div class="row form-group" style="padding-left:2em;">
-                    <div class="col-xs-2 col-sm-2 col-md-2">
-                        <div class="checkbox">
-                            <small>Rack 26B</small>
-
-                        </div>
-                    </div>
-                    <label class="switch switch-text switch-primary">
-                        @Html.CheckBoxFor(m => m.RACK26B_STATUS, new { @class = "switch-input", @checked = "checked" })
-                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
-                        <span class="switch-handle" style="width:25px;"></span>
-                    </label>
-                    <div class="col-xs-3 col-sm-3 col-md-3">
-                        <button id="detailBtn" value="26B" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
-                            Detalle Rack
-                        </button>
-                    </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2">
-                        <div class="checkbox">
-                            <small>Rack 27</small>
-
-                        </div>
-                    </div>
-                    <label class="switch switch-text switch-primary">
-                        @Html.CheckBoxFor(m => m.RACK27_STATUS, new { @class = "switch-input", @checked = "checked" })
-                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
-                        <span class="switch-handle" style="width:25px;"></span>
-                    </label>
-                    <div class="col-xs-3 col-sm-3 col-md-3">
-                        <button id="detailBtn" value="27" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
-                            Detalle Rack
-                        </button>
-                    </div>
-                </div>
-                <div class="row form-group" style="padding-left:2em;">
-
-                    <div class="col-xs-2 col-sm-2 col-md-2">
-                        <div class="checkbox">
-                            <small>Rack 28</small>
-
-                        </div>
-                    </div>
-                    <label class="switch switch-text switch-primary">
-                        @Html.CheckBoxFor(m => m.RACK28_STATUS, new { @class = "switch-input", @checked = "checked" })
-                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
-                        <span class="switch-handle" style="width:25px;"></span>
-                    </label>
-                    <div class="col-xs-3 col-sm-3 col-md-3">
-                        <button id="detailBtn" value="28" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
-                            Detalle Rack
-                        </button>
-                    </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2">
-                        <div class="checkbox">
-                            <small>Rack 29</small>
-
-                        </div>
-                    </div>
-                    <label class="switch switch-text switch-primary">
-                        @Html.CheckBoxFor(m => m.RACK29_STATUS, new { @class = "switch-input", @checked = "checked" })
-                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
-                        <span class="switch-handle" style="width:25px;"></span>
-                    </label>
-                    <div class="col-xs-3 col-sm-3 col-md-3">
-                        <button id="detailBtn" value="29" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
-                            Detalle Rack
-                        </button>
-                    </div>
-                </div>
-
-                <hr />
-                <h4> <label style="padding-left:20px;" class=" form-control-label">PDU A</label> </h4>
-                <hr />
-
-
-                <div class="row form-group" style="padding-left:2em;">
-                    <div class=" col-md-4">
-                        <label class=" form-control-label">Estado Alarma  (PDUA)</label>
-                    </div>
-                    <div class=" col-md-2">
-                        <div class="form-check">
-                            <div class="checkbox">
-                                <label class="switch switch-text switch-primary">
-                                    @Html.CheckBoxFor(m => m.PDUA_ALARMA, new { @class = "switch-input", @checked = "checked" })
-                                    <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
-                                    <span class="switch-handle" style="width:25px;"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class=" col-md-4">
-                        <label for="PDUA_POTENCIA" class=" form-control-label">Potencia (Kw)</label>
-                    </div>
-                    <div class=" col-md-2">
-                        @Html.TextBoxFor(m => m.PDUA_POTENCIA, new { @class = "form-control", @placeholder = "°" })
-                        @Html.ValidationMessageFor(m => m.PDUA_POTENCIA, null, new { @class = "text-danger" })
-                    </div>
 
                 </div>
 
-                <div class="row form-group" style="padding-left:2em;">
-                    <div class=" col-md-4">
-                        <label class=" form-control-label">Revision LOG  (PDUA)</label>
-                    </div>
-                    <div class=" col-md-2">
-                        <div class="form-check">
-                            <div class="checkbox">
-                                <label class="switch switch-text switch-primary">
-                                    @Html.CheckBoxFor(m => m.PDUA_LOG, new { @class = "switch-input", @checked = "checked" })
-                                    <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
-                                    <span class="switch-handle" style="width:25px;"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class=" col-md-4">
-                        <label for="PDUA_FRECUENCIA" class=" form-control-label">Frecuencia (Hz)</label>
-                    </div>
-                    <div class=" col-md-2">
 
-                        @Html.TextBoxFor(m => m.PDUA_FRECUENCIA, new { @class = "form-control", @placeholder = "°" })
-                        @Html.ValidationMessageFor(m => m.PDUA_FRECUENCIA, "", new { @class = "text-danger" })
-                    </div>
 
-                </div>
+
 
 
                 <hr />
@@ -496,6 +313,201 @@
                     </div>
 
                 </div>
+                <div class="row form-group" style="padding-left:2em;">
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack  21</small>
+
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK21_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="21" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 22</small>
+
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK22_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="22" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+
+                </div>
+                <div class="row form-group" style="padding-left:2em;">
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 23</small>
+
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK23_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="23" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 24</small>
+
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK24_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="24" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+
+                </div>
+                <div class="row form-group" style="padding-left:2em;">
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 25A</small>
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK25A_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="25B" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 25B</small>
+
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK25B_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="25B" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+
+                </div>
+                <div class="row form-group" style="padding-left:2em;">
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 26A</small>
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK26A_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="26A" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 26B</small>
+
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK26B_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="26B" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+
+                </div>
+                <div class="row form-group" style="padding-left:2em;">
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 27</small>
+
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK27_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="27" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 28</small>
+
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK28_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="28" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+
+                </div>
+                <div class="row form-group" style="padding-left:2em;">
+
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <div class="checkbox">
+                            <small>Rack 29</small>
+
+                        </div>
+                    </div>
+                    <label class="switch switch-text switch-primary">
+                        @Html.CheckBoxFor(m => m.RACK29_STATUS, new { @class = "switch-input", @checked = "checked" })
+                        <span data-on="OK" data-off="NO OK" class="switch-label" style="width:60px;"> </span>
+                        <span class="switch-handle" style="width:25px;"></span>
+                    </label>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <button id="detailBtn" value="29" type="button" class="btn-sm btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+                            Detalle Rack
+                        </button>
+                    </div>
+                </div>
+
+
+
 
 
                 <hr />
@@ -557,7 +569,7 @@
                         </div>
                     </div>
                 </div>
-               
+
                 <div id="ac5">
                     <hr />
                     <h4> <label style="padding-left:20px;" class=" form-control-label">AIRE ACONDICIONADO (5 TNS)</label> </h4>
@@ -627,19 +639,19 @@
                     </div>
                 </div>
 
-              
+
 
                 <input class="small" />
             </div>
-            <div class="card-footer">
-                <button type="submit" class="btn btn-primary btn-sm">
-                    <i class="fa fa-dot-circle-o">Continuar</i>
-                </button>
-                <button type="reset" class="btn btn-danger btn-sm">
-                    <i class="fa fa-ban"></i> Reset
-                </button>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        <i class="fa fa-dot-circle-o">Continuar</i>
+                    </button>
+                    <button type="reset" class="btn btn-danger btn-sm">
+                        <i class="fa fa-ban"></i> Reset
+                    </button>
+                </div>
             </div>
-        </div>
     }
 
         <script>
@@ -696,9 +708,9 @@
             $(document).ready(function () {
                 var CommentGlobal = "";
                 $('#ac5').hide();
-                $('#AC5_TEMP_SALIDA').val('1');
-                $('#AC5_TEMP_ENTRADA').val('1');
-                $('#AC5_HUMEDAD').val('1');
+                $('#AC5_TEMP_SALIDA').val('');
+                $('#AC5_TEMP_ENTRADA').val('0');
+                $('#AC5_HUMEDAD').val('');
 
 
                 $('#aire').change(function () {
@@ -710,9 +722,9 @@
                     if (selectedValue == "20") {
                         $('#ac5').hide();  // hide element1
 
-                        $('#AC5_TEMP_SALIDA').val('1');
-                        $('#AC5_TEMP_ENTRADA').val('1');
-                        $('#AC5_HUMEDAD').val('1');
+                        $('#AC5_TEMP_SALIDA').val('');
+                        $('#AC5_TEMP_ENTRADA').val('0');
+                        $('#AC5_HUMEDAD').val('');
                         
                         
                         
@@ -726,9 +738,9 @@
                         console.log('5');
                         $('#ac20').hide();  // hide element1
 
-                        $('#AC20_TEMP_SALIDA').val('1');
-                        $('#AC20_TEMP_ENTRADA').val('1');
-                        $('#AC20_HUMEDAD').val('1')
+                        $('#AC20_TEMP_SALIDA').val('');
+                        $('#AC20_TEMP_ENTRADA').val('');
+                        $('#AC20_HUMEDAD').val('')
                           
                       
                         $('#ac5').show();  // show element1

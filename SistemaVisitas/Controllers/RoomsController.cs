@@ -160,7 +160,7 @@ namespace SistemaVisitas.Controllers
         {
            
 
-            if ((DateTime.Now.DayOfWeek.ToString() == DayOfWeek.Saturday.ToString()) && DateTime.Now.Hour > 10 && DateTime.Now.Hour < 13 )
+            if ((DateTime.Now.DayOfWeek.ToString() == DayOfWeek.Wednesday.ToString()) && DateTime.Now.Hour > 13 && DateTime.Now.Hour < 15 )
             {
 
                 if (ModelState.IsValid)

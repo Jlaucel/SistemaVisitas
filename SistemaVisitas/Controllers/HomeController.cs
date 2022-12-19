@@ -57,7 +57,7 @@ namespace SistemaVisitas.Controllers
         }
         [Authorize(Roles =("Admin,Developer"))]
         public ActionResult Stadistics() {
-            SqlConnection conn = new SqlConnection(@"Data Source=YuniorPC\SQLEXPRESS;Initial Catalog=SistemaVisitas;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework");
+            SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-1ED1IEE;Initial Catalog=SistemaVisitas;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework");
 
             SqlCommand cmd = new SqlCommand("SELECT * FROM returnUPSA()", conn);
             // cmd.CommandType=CommandType.StoredProcedure;  

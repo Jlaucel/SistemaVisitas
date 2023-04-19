@@ -461,4 +461,32 @@ namespace SistemaVisitas.Models
         public virtual ICollection<RegistroVisitasViewModel> REGISTROVISITAS { get; set; }
     }
 
+
+
+
+    public partial class ReporteVisitaModelList { 
+    
+    
+    public List<ReporteVisitaModel> DataList { get; set;        }
+    
+    }
+    
+    public partial class ReporteVisitaModel {
+
+
+        public string Fecha { get; set; }
+
+        public string Operador { get; set; }
+
+       
+
+
+    }
+
+
+
+
+
+
+
 }

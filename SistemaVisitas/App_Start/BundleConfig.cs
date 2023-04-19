@@ -23,9 +23,14 @@ namespace SistemaVisitas
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/dataTable").Include(
+                    "~/Scripts/dataTables.boostrap4.min.js",
+                    "~/Scripts/jquery.dataTables.min.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/dataTables4.min.css"));
         }
     }
 }

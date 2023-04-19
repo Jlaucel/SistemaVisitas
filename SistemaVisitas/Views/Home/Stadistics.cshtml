@@ -1,5 +1,5 @@
-﻿@using System.Data
-@model DataTable
+﻿@using SistemaVisitas.Models
+@model ReporteVisitaModelList
 @{
     ViewBag.Title = "Stadistics";
 }
@@ -24,359 +24,68 @@
             left: 0;
         }
 </style>
+
+
+<div class="row">
+    <h2> Reporte General </h2>
+    <div class="table-responsive table--no-card m-b-40 ">
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    @foreach (System.Data.DataColumn col in ViewBag.ReporteGeneral.Columns)
+                    {
+
+                        <th>@col.Caption </th>
+
+
+                    }
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (System.Data.DataRow row in ViewBag.ReporteGeneral.Rows)
+                {
+
+                    <tr>
+                        @foreach (var cell in row.ItemArray)
+                        {
+                            <td>@cell.ToString() </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+        </div> 
+    </div>
+
+<button id="BTN_UPSA">PRESIONA </button>
+
    
-<div class="row">
-    <h3 class="title-1 m-b-25">UPS A - Reporte</h3>
 
 
-    <div class="table-responsive table--no-card m-b-40 tableFixHead">
-        <div class="btn-group btn-group-justified" role="group" aria-label="...">
-            <div class="btn-group" role="group">
-                <button id="BTN_UPSA" type="button" class="btn btn-success">Export EXCEL</button>
-            </div>
 
-        </div>
-        <table id="UPSA_TABLE" class="table table-borderless table-striped table-earning">
-            <thead>
-                <tr>
-                    @foreach (System.Data.DataColumn col in Model.Columns)
-                    {
 
-                        <th>@col.Caption </th>
 
 
-                    }
 
 
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (System.Data.DataRow row in Model.Rows)
-                {
 
-                    <tr>
-                        @foreach (var cell in row.ItemArray)
-                        {
-                            <td>@cell.ToString() </td>
-                        }
-                    </tr>
-                }
-            </tbody>
+     
 
-        </table>
-    </div>
-    <h3 class="title-1 m-b-25">UPS B - Reporte</h3>
-
-
-    @* UPS B TABLA*@
-    <div class="table-responsive table--no-card m-b-40 tableFixHead">
-        <div class="btn-group btn-group-justified" role="group" aria-label="...">
-            <div class="btn-group" role="group">
-                <button id="BTN_UPSB" type="button" class="btn btn-success">Export EXCEL</button>
-            </div>
-          
-        </div>
-        <table id="UPSB_TABLE" class="table table-borderless table-striped table-earning">
-            <thead>
-                <tr>
-                    @foreach (System.Data.DataColumn col in ViewBag.UPSB.Columns)
-                    {
-
-                        <th>@col.Caption </th>
-
-
-                    }
-
-
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (System.Data.DataRow row in ViewBag.UPSB.Rows)
-                {
-
-                    <tr>
-                        @foreach (var cell in row.ItemArray)
-                        {
-                            <td>@cell.ToString() </td>
-                        }
-                    </tr>
-                }
-            </tbody>
-
-        </table>
-    </div>
-    <h3 class="title-1 m-b-25">Aire 20T - Reporte</h3>
-
-    <div class="table-responsive table--no-card m-b-40 tableFixHead">
-        <div class="btn-group btn-group-justified" role="group" aria-label="...">
-            <div class="btn-group" role="group">
-                <button id="BTN_AIR20" type="button" class="btn btn-success">Export EXCEL</button>
-            </div>
-
-        </div>
-        <table id="AIR20_TABLE" class="table table-borderless table-striped table-earning">
-            <thead>
-                <tr>
-                    @foreach (System.Data.DataColumn col in ViewBag.AC20.Columns)
-                    {
-
-                        <th>@col.Caption </th>
-
-
-                    }
-
-
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (System.Data.DataRow row in ViewBag.AC20.Rows)
-                {
-
-                    <tr>
-                        @foreach (var cell in row.ItemArray)
-                        {
-                            <td>@cell.ToString() </td>
-                        }
-                    </tr>
-                }
-            </tbody>
-
-        </table>
-    </div>
-    <h3 class="title-1 m-b-25">Aire 5T - Reporte</h3>
-
-    <div class="table-responsive table--no-card m-b-40 tableFixHead">
-        <div class="btn-group btn-group-justified" role="group" aria-label="...">
-            <div class="btn-group" role="group">
-                <button id="BTN_AIR5" type="button" class="btn btn-success">Export EXCEL</button>
-            </div>
-
-        </div>
-        <table id="AIR5_TABLE" class="table table-borderless table-striped table-earning">
-            <thead>
-                <tr>
-                    @foreach (System.Data.DataColumn col in ViewBag.AC5.Columns)
-                    {
-
-                        <th>@col.Caption </th>
-
-
-                    }
-
-
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (System.Data.DataRow row in ViewBag.AC5.Rows)
-                {
-
-                    <tr>
-                        @foreach (var cell in row.ItemArray)
-                        {
-                            <td>@cell.ToString() </td>
-                        }
-                    </tr>
-                }
-            </tbody>
-
-        </table>
-    </div>
-    <h3 class="title-1 m-b-25">PDUA - Reporte</h3>
-
-    <div class="table-responsive table--no-card m-b-40 tableFixHead">
-        <div class="btn-group btn-group-justified" role="group" aria-label="...">
-            <div class="btn-group" role="group">
-                <button id="BTN_PDUA" type="button" class="btn btn-success">Export EXCEL</button>
-            </div>
-
-        </div>
-        <table id="PDUA_TABLE" class="table table-borderless table-striped table-earning">
-            <thead>
-                <tr>
-                    @foreach (System.Data.DataColumn col in ViewBag.PDUA.Columns)
-                    {
-
-                        <th>@col.Caption </th>
-
-
-                    }
-
-
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (System.Data.DataRow row in ViewBag.PDUA.Rows)
-                {
-
-                    <tr>
-                        @foreach (var cell in row.ItemArray)
-                        {
-                            <td>@cell.ToString() </td>
-                        }
-                    </tr>
-                }
-            </tbody>
-
-        </table>
-    </div>
-    <h3 class="title-1 m-b-25">PDUB - Reporte</h3>
-
-    <div class="table-responsive table--no-card m-b-40 tableFixHead">
-        <div class="btn-group btn-group-justified" role="group" aria-label="...">
-            <div class="btn-group" role="group">
-                <button id="BTN_PDUB" type="button" class="btn btn-success">Export EXCEL</button>
-            </div>
-
-        </div>
-        <table id="PDUB_TABLE" class="table table-borderless table-striped table-earning">
-            <thead>
-                <tr>
-                    @foreach (System.Data.DataColumn col in ViewBag.PDUB.Columns)
-                    {
-                        if (@col.Caption == "False")
-                        {
-
-                            <th>>xxx</th>
-
-                        }
-                        else
-                        {
-                            <th>@col.Caption </th>
-                        }
-
-                    }
-
-
-
-                    }
-
-
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (System.Data.DataRow row in ViewBag.PDUB.Rows)
-                {
-
-                    <tr>
-                        @foreach (var cell in row.ItemArray)
-                        {
-                            <td>@cell.ToString() </td>
-                        }
-                    </tr>
-                }
-            </tbody>
-
-        </table>
-    </div>
-
-
-</div>
-<div class="row">
-    <h2 class="title-1 m-b-25">Revisiones Realizadas</h2>
-
-
-    <div class="table-responsive table--no-card m-b-40 tableFixHead">
-
-
-        <table class="table table-borderless table-striped table-earning">
-            <thead>
-                <tr>
-                    <th>Fecha</th>
-                    <th>Hora inicio</th>
-                    <th>Hora final</th>
-                    <th>Operador</th>
-                </tr>
-            </thead>
-            <tbody>
-
-
-                @**     @foreach (var item in Model)
-                        {
-
-                            var HoraInicio = DateTime.SpecifyKind(DateTime.Now.Date.Add(item.HORA_INICIO), DateTimeKind.Utc).ToShortTimeString();
-                            var HoraFinal = DateTime.SpecifyKind(DateTime.Now.Date.Add(item.HORA_FINAL), DateTimeKind.Utc).ToShortTimeString();
-
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.FECHA.Day)/@Html.DisplayFor(modelItem => item.FECHA.Month)/@Html.DisplayFor(modelItem => item.FECHA.Year)
-                                </td>
-                                <td>
-                                    @HoraInicio
-                                </td>
-                                <td>
-                                    @HoraFinal
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.USERNAME)
-                                </td>
-                            </tr>
-
-
-                        }
-
-                    </tbody>*@
-        </table>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-lg-6">
-        <div class="au-card m-b-30">
-            <div class="au-card-inner">
-                <h3 class="title-2 m-b-40">Visitas por Empleados</h3>
-                <canvas id="barChartx"></canvas>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-6">
-        <div class="row">
-            <div class="col-md-1">
-                <label for="select" class=" form-control-label">Sala</label>
-            </div>
-            <div class="col-md-3">
-                <select name="select" id="select" class="form-control">
-                    <option value="0">Seleccion</option>
-                    <option value="1">Entrace Room</option>
-                    <option value="2">Generator Room</option>
-                    <option value="3">UPS B</option>
-                    <option value="3">Cuarto Electrico</option>
-                    <option value="3">ODC Office</option>
-                </select>
-            </div>
-            <div class="col-md-1">
-                <label for="select" class=" form-control-label">Campo</label>
-            </div>
-            <div class="col-md-3">
-                <select name="select" id="select" class="form-control">
-                    <option value="0">Seleccion</option>
-                    <option value="1">Temperatura UPS A</option>
-                    <option value="2">Estado Rack 2</option>
-                    <option value="3">Temperatura Aire 20tnds</option>
-                    <option value="3">Voltaje Baterias</option>
-                </select>
-            </div>
-            <div class="col-md-1">
-                <input class="au-btn au-btn--blue2" value="Actualizar" type="button" />
-            </div>
-            <div class="col-md-1">
-            </div>
-        </div>
-        <hr />
-
-        <div class="au-card m-b-30">
-            <div class="au-card-inner">
-                <h3 class="title-2 m-b-40">Valor Promedio</h3>
-                <canvas id="team-chartx"></canvas>
-            </div>
-        </div>
-
-    </div>
-</div>
+       
+        
 
 
 
     <script>
+
+
+
         $(document).ready(function () {
+
+            $('#example').DataTable();
             var d = new Date();
 
             var month = d.getMonth() + 1;
@@ -389,7 +98,7 @@
 
 
             $("#BTN_UPSA").click(function () {
-                $("#UPSA_TABLE").table2excel({
+                $("#example").table2excel({
                     // exclude CSS class
                     exclude: ".noExl",
                     name: "UPSA",
@@ -450,8 +159,17 @@
                 });
             });
 
+            $("#BTN_ReporteGeneral").click(function () {
+                $("#ReporteGeneral_TABLE").table2excel({
+                    // exclude CSS class
+                    exclude: ".noExl",
+                    name: "ReporteGeneral",
+                    filename: "ReporteGeneral_" + output, //do not include extension
+                    fileext: ".xlsx" // file extension
+                });
+            });
 
-           
+
         });
 
 

@@ -57,7 +57,9 @@ namespace SistemaVisitas.Controllers
         }
         [Authorize(Roles =("Admin,Developer"))]
         public ActionResult Stadistics() {
-            SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-1ED1IEE;Initial Catalog=SistemaVisitas;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework");
+            SqlConnection conn = new SqlConnection(@"Data Source=YUNIORPC\SQLEXPRESS;Initial Catalog=SistemaVisitas;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework");
+
+
 
             SqlCommand cmd = new SqlCommand("SELECT * FROM returnUPSA()", conn);
             // cmd.CommandType=CommandType.StoredProcedure;  
@@ -65,6 +67,7 @@ namespace SistemaVisitas.Controllers
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
+            ViewBag.UPSA = dt;
 
             cmd = new SqlCommand("SELECT * FROM returnUPSB()", conn);
             // cmd.CommandType=CommandType.StoredProcedure;  
@@ -107,6 +110,51 @@ namespace SistemaVisitas.Controllers
             da.Fill(dt6);
             ViewBag.PDUB = dt6;
 
+         /*   cmd = new SqlCommand("SELECT * FROM ReporteGeneral('03-04-2021')", conn);
+            // cmd.CommandType=CommandType.StoredProcedure;  
+            cmd.Parameters.AddWithValue("@username", "username");
+            da = new SqlDataAdapter(cmd);
+            DataTable dt7 = new DataTable();
+            da.Fill(dt7);
+            ViewBag.ReporteGeneral = dt7;*/
+
+
+            cmd = new SqlCommand("SELECT * FROM ReporteGeneral()", conn);
+            // cmd.CommandType=CommandType.StoredProcedure;  
+            cmd.Parameters.AddWithValue("@username", "username");
+            da = new SqlDataAdapter(cmd);
+            DataTable dt8 = new DataTable();
+            da.Fill(dt8);
+
+
+            ViewBag.ReporteGeneral = dt8;
+
+
+
+            ReporteVisitaModelList Model = new ReporteVisitaModelList()
+            {
+                DataList  = new List<ReporteVisitaModel>()
+
+            };
+
+         /*   for (int i = 0; i < dt.Rows.Count; i++) {
+
+                DataRow dr = dt8.Rows[i];
+                Model.DataList.Add(new ReporteVisitaModel { 
+                
+                Fecha = dr["FECHA"].ToString(),
+                Operador = dr["USERNAME"].ToString()
+
+                
+                });
+            
+            
+            }*/
+
+           
+
+
+
 
 
 
@@ -119,11 +167,17 @@ namespace SistemaVisitas.Controllers
 
             var items = db.REGISTROVISITAS.ToList();
 
-            return View(dt);
+            return View(Model);
         }
 
-      
-        [Authorize]
+        public ActionResult Graficos()
+        {
+
+            return View();
+        }
+
+
+            [Authorize]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

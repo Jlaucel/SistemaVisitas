@@ -26,7 +26,13 @@
     <link href="~/Contents/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
     <!-- Main CSS-->
     <link href="~/Contents/css/theme.css" rel="stylesheet" media="all">
+    <link href="~/Contents/css/theme.css" rel="stylesheet" media="all">
+    <link href="~/Content/dataTables4.min.css" rel="stylesheet" media="all" />
     <script src="~/Contents/vendor/jquery-3.2.1.min.js"></script>
+
+    <script src="~/Scripts/jquery-3.5.1.js"></script>
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/dataTables.boostrap4.min.js"></script>
 </head>
 <body class="animsition">
     <div class="page-wrapper">
@@ -103,11 +109,17 @@
                                     <i class="fas fa-chart-bar"></i>Estadisticas
                                 </a>
                             </li>
-                        } else if (User.IsInRole("Admin"))
+                            <li>2
+                                <a href="@Url.Action("Graficos", "Home")">
+                                    <i class="fas fa-chart-bar"></i>Graficos
+                                </a>
+                            </li>
+                        }
+                        else if (User.IsInRole("Admin"))
                         {
                             <li>
-                                <a href="@Url.Action("Stadistics", "Home")">
-                                    <i class="fas fa-chart-bar"></i>Estadisticas
+                                <a href="@Url.Action("Graficos", "Home")">
+                                    <i class="fas fa-chart-bar"></i>Graficos
                                 </a>
                             </li>
                         }
@@ -148,11 +160,26 @@
                                     <i class="fas fa-chart-bar"></i>Estadisticas
                                 </a>
                             </li>
-                        }else if (User.IsInRole("Admin"))
+
+                            <li>
+                                <a href="@Url.Action("Graficos", "Home")">
+                                    <i class="fas fa-chart-bar"></i>Graficos
+                                </a>
+                            </li>
+
+
+                        }
+                        else if (User.IsInRole("Admin"))
                         {
                             <li>
                                 <a href="@Url.Action("Stadistics", "Home")">
                                     <i class="fas fa-chart-bar"></i>Estadisticas
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="@Url.Action("Graficos", "Home")">
+                                    <i class="fas fa-chart-bar"></i>Graficos
                                 </a>
                             </li>
                         }
@@ -287,6 +314,8 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/dataTable")
+    
     @RenderSection("scripts", required: false)
 </body>
 </html>
